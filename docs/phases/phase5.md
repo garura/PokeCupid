@@ -1,5 +1,7 @@
 # Phase 5: Reminders and Garbage Collection
 
+not yet reflective of my project
+
 ## Rails
 ### Models
 * Reminder

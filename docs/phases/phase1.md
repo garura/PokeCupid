@@ -1,5 +1,6 @@
 # Phase 1: User Authentication, Note Model and JSON API
 
+not yet reflective of my project
 ## Rails
 ### Models
 * User

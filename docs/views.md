@@ -1,6 +1,7 @@
 # View Wireframes
 
-## New User
+views not yet implemented
+<!-- ## New User
 ![new-user]
 
 ## New Session
@@ -19,4 +20,4 @@
 [new-session]: ./wireframes/new_session.png
 [notes]: ./wireframes/root_notes.png
 [notebooks]: ./wireframes/root_notebooks.png
-[notebook-form]: ./wireframes/notebook_form.png
+[notebook-form]: ./wireframes/notebook_form.png -->

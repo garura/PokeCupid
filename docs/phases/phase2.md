@@ -1,5 +1,6 @@
 # Phase 2: Flux Architecture and Note CRUD (2 days)
 
+not yet reflective of my project
 ## Rails
 ### Models
 
@@ -21,9 +22,9 @@
 * ApiActions.receiveSingleNote
 * ApiActions.deleteNote
 * NoteActions.fetchAllNotes -> triggers ApiUtil
-* NoteActions.fetchSingleNote 
+* NoteActions.fetchSingleNote
 * NoteActions.createNote
-* NoteActions.editNote 
+* NoteActions.editNote
 * NoteActions.destroyNote
 
 ### ApiUtil

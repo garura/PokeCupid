@@ -1,5 +1,6 @@
 # Phase 3: Notebooks and Tags (2 days)
 
+not yet reflective of my project
 ## Rails
 ### Models
 * Notebook
