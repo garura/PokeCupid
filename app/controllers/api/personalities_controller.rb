@@ -8,7 +8,7 @@ class Api::PersonalitiesController < ApplicationController
   def update
     @personality = Personality.find(params[:id])
     @personality.update
-    render :show # update returns new user info
+    render :show
   end
 
   def show

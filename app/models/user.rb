@@ -7,8 +7,9 @@ class User < ActiveRecord::Base
   after_initialize :ensure_session_token
 
   has_one :personality
-
-
+# has_many :sexualities
+# has_many :ethnicities
+# has_many :languages
 
 
   def self.find_by_credentials(username, password)

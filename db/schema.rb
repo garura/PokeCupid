@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160223201033) do
+ActiveRecord::Schema.define(version: 20160223222305) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,9 +24,34 @@ ActiveRecord::Schema.define(version: 20160223201033) do
     t.text     "six"
     t.text     "friday"
     t.text     "message"
-    t.integer  "user_id",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "user_id",                              null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.string   "desired_gender"
+    t.integer  "min_age"
+    t.integer  "max_age"
+    t.boolean  "desire_single",     default: true
+    t.boolean  "new_friends",       default: true
+    t.boolean  "long_term",         default: true
+    t.boolean  "short_term",        default: true
+    t.boolean  "casual",            default: false
+    t.string   "status",            default: "Single", null: false
+    t.string   "relationship_type"
+    t.integer  "feet"
+    t.integer  "inches",            default: 0
+    t.integer  "centimeters",       default: 0
+    t.string   "body_type"
+    t.string   "diet"
+    t.string   "smoking"
+    t.string   "drinking"
+    t.string   "drugs",             default: "Never"
+    t.string   "religion"
+    t.string   "sign"
+    t.string   "edu_progress"
+    t.string   "education"
+    t.string   "offspring"
+    t.boolean  "dogs",              default: false
+    t.boolean  "cats",              default: false
   end
 
   add_index "personalities", ["user_id"], name: "index_personalities_on_user_id", unique: true, using: :btree
