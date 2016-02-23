@@ -11,10 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160223171348) do
+ActiveRecord::Schema.define(version: 20160223185618) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "personalities", force: :cascade do |t|
+    t.text     "summary"
+    t.text     "life"
+    t.text     "skills"
+    t.text     "favorites"
+    t.text     "six"
+    t.text     "friday"
+    t.text     "message"
+    t.integer  "user_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "personalities", ["user_id"], name: "index_personalities_on_user_id", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username",        null: false
