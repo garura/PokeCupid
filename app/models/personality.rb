@@ -8,7 +8,4 @@ class Personality < ActiveRecord::Base
 
 end
 
-
-
-
-# TODO lookingfor table, details table
+# TODO seeking table, details table
