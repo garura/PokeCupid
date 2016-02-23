@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160223222305) do
+ActiveRecord::Schema.define(version: 20160223231136) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,18 +55,6 @@ ActiveRecord::Schema.define(version: 20160223222305) do
   end
 
   add_index "personalities", ["user_id"], name: "index_personalities_on_user_id", unique: true, using: :btree
-
-  create_table "seekings", force: :cascade do |t|
-    t.integer  "min_age",                   null: false
-    t.integer  "max_age",                   null: false
-    t.integer  "user_id",                   null: false
-    t.integer  "gender",                    null: false
-    t.boolean  "single",     default: true, null: false
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-  end
-
-  add_index "seekings", ["user_id"], name: "index_seekings_on_user_id", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username",        null: false
