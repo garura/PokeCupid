@@ -13,7 +13,7 @@ class Personality < ActiveRecord::Base
 
   INCHES = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
-  BODY_TYPE = ["Rather not say", "Thin", "Overweight", "Average Build"]
+  BODY_TYPE = ["Rather not say", "Thin", "Overweight", "Average build"]
 
   DIET = ["Vegetarian", "Vegan", "Kosher", "Halal"]
 
@@ -51,7 +51,7 @@ class Personality < ActiveRecord::Base
     "Pisces"
   ]
 
-  EDU_PROGRESS = ["Working On", "Dropped out of"]
+  EDU_PROGRESS = ["Working on", "Dropped out of"]
 
   EDUCATION = [
     "High school",
@@ -63,7 +63,7 @@ class Personality < ActiveRecord::Base
 
   OFFSPRING = ["Has kid(s)", "Doesn't have kids"]
 
-  LANGUAGES = ["English", "Other"]
+  LANGUAGES = ["English", "Other", "Multiple"]
 
   validates :user_id, :status, presence: true
   validates :user_id, uniqueness: true

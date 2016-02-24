@@ -1,15 +1,16 @@
 class User < ActiveRecord::Base
   attr_reader :password
 
-  validates :username, :email, :session_token, :password_digest, presence: true
+  validates :username, :email, :session_token, :password_digest,
+    :birthday, presence: true
   validates :username, :email, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
+  validate :valid_birthday
   after_initialize :ensure_session_token
 
   has_one :personality, dependent: :destroy
-# has_many :sexualities
-# has_many :ethnicities
-
+  has_many :genders, dependent: :destroy
+# 567648000 seconds in 18 years
 
   def self.find_by_credentials(username, password)
     user = User.find_by_username(username)
@@ -37,6 +38,14 @@ class User < ActiveRecord::Base
 
   def is_password?(password)
     BCrypt::Password.new(self.password_digest).is_password?(password)
+  end
+
+  private
+
+  def valid_birthday
+    if birthday && (Time.now - birthday.to_time) < 567648000
+      errors[:birthday] << "invalid. Must be at least 18 years old"
+    end
   end
 
 end
