@@ -23,6 +23,7 @@ class Personality < ActiveRecord::Base
   validate :max_age_valid
 
   belongs_to :user
+  has_many :orientations
 
   RELATIONSHIP_STATUS = [
     "Single",
@@ -31,23 +32,22 @@ class Personality < ActiveRecord::Base
     "In an open relationship"
   ]
 
-  RELATIONSHIP_TYPE = [nil, "Monogamous", "Non-monogamous"]
+  RELATIONSHIP_TYPE = ["Monogamous", "Non-monogamous"]
 
   FEET = [3, 4, 5, 6, 7]
   INCHES = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
-  BODY_TYPE = [nil, "Rather not say", "Thin", "Overweight", "Average Build"]
+  BODY_TYPE = ["Rather not say", "Thin", "Overweight", "Average Build"]
 
-  DIET = [nil, "Vegetarian", "Vegan", "Kosher", "Halal"]
+  DIET = ["Vegetarian", "Vegan", "Kosher", "Halal"]
 
-  SMOKING = [nil, "Yes", "Sometimes", "No"]
+  SMOKING = ["Yes", "Sometimes", "No"]
 
-  DRINKING = [nil, "Often", "Socially", "Not at all"]
+  DRINKING = ["Often", "Socially", "Not at all"]
 
-  DRUGS = [nil, "Never", "Sometimes", "Often"]
+  DRUGS = ["Never", "Sometimes", "Often"]
 
   RELIGION = [
-    nil,
     "Agnosticism",
     "Atheism",
     "Christianity",
@@ -61,7 +61,6 @@ class Personality < ActiveRecord::Base
   ]
 
   SIGN =[
-    nil,
     "Aries",
     "Taurus",
     "Gemini",
@@ -76,10 +75,9 @@ class Personality < ActiveRecord::Base
     "Pisces"
   ]
 
-  EDU_PROGRESS = [nil, "Working On", "Dropped out of"]
+  EDU_PROGRESS = ["Working On", "Dropped out of"]
 
   EDUCATION = [
-    nil,
     "High school",
     "Two-year college",
     "University",
@@ -87,30 +85,27 @@ class Personality < ActiveRecord::Base
     "Post grad"
   ]
 
-  OFFSPRING = [nil, "Has kid(s)", "Doesn't have kids"]
+  OFFSPRING = ["Has kid(s)", "Doesn't have kids"]
 
-  LANGUAGES = [nil, "English", "Other"]
+  LANGUAGES = ["English", "Other"]
 
   private
 
   def min_age_valid
-    if min_age < 18
+    if min_age && min_age < 18
       errors[:min_age] << "Minimum age is 18"
     end
   end
 
   def max_age_valid
-    if max_age < min_age
+    if max_age && max_age < min_age
       errors[:max_age] << "Max age must be higher than min age"
     end
   end
 
-
-  # TODO: validations for:
-  # min_age and max_age
-
-
-
 end
 
-# TODO seeking table, details table
+
+# TODO orientation model
+# TODO gender model
+# TODO orientation, gender, birthdate forms on sign up
