@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160223231136) do
+ActiveRecord::Schema.define(version: 20160223235702) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20160223231136) do
     t.string   "offspring"
     t.boolean  "dogs",              default: false
     t.boolean  "cats",              default: false
+    t.string   "languages"
   end
 
   add_index "personalities", ["user_id"], name: "index_personalities_on_user_id", unique: true, using: :btree
