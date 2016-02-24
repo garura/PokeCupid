@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class Api::UsersController < ApplicationController
 
   def new
     redirect_to root_url if current_user
@@ -10,6 +10,7 @@ class UsersController < ApplicationController
     if @user.save
       log_in!(@user)
       # create personality (, etc.) objects with user_id = @user.id?
+      # create gender
       redirect_to root_url
     else
       flash.now[:errors] = @user.errors.full_messages

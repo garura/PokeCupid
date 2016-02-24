@@ -10,7 +10,6 @@ class User < ActiveRecord::Base
 
   has_one :personality, dependent: :destroy
   has_many :genders, dependent: :destroy
-# 567648000 seconds in 18 years
 
   def self.find_by_credentials(username, password)
     user = User.find_by_username(username)
