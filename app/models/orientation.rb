@@ -1,9 +1,4 @@
 class Orientation < ActiveRecord::Base
-  validates :orientation_type, inclusion: ORIENTATION_TYPE
-  validates :orientation_type, :personality_id, presence: true
-  validates :orientation_type, uniqueness: { scope: :personality_id }
-
-  belongs_to :personality
 
   ORIENTATION_TYPE = [
     "Straight",
@@ -15,5 +10,10 @@ class Orientation < ActiveRecord::Base
     "Questioning"
   ]
 
+  validates :orientation_type, inclusion: ORIENTATION_TYPE
+  validates :orientation_type, :personality_id, presence: true
+  validates :personality_id, uniqueness: { scope: :orientation_type }
+
+  belongs_to :personality
 
 end

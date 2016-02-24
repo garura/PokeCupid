@@ -1,29 +1,4 @@
 class Personality < ActiveRecord::Base
-  validates :user_id, :status, presence: true
-  validates :user_id, uniqueness: true
-  validates :relationship_type, :body_type, :diet, :smoking, :drinking,
-    :drugs, :religion, :sign, :edu_progress, :education, :offspring,
-    :languages, allow_nil: true
-  validates :status, inclusion: RELATIONSHIP_STATUS
-  validates :relationship_type, inclusion: RELATIONSHIP_TYPE
-  validates :feet, inclusion: FEET
-  validates :inches, inclusion: INCHES
-  validates :body_type, inclusion: BODY_TYPE
-  validates :diet, inclusion: DIET
-  validates :smoking, inclusion: SMOKING
-  validates :drinking, inclusion: DRINKING
-  validates :drugs, inclusion: DRUGS
-  validates :religion, inclusion: RELIGION
-  validates :sign, inclusion: SIGN
-  validates :edu_progress, inclusion: EDU_PROGRESS
-  validates :education, inclusion: EDUCATION
-  validates :offspring, inclusion: OFFSPRING
-  validates :languages, inclusion: LANGUAGES
-  validate :min_age_valid
-  validate :max_age_valid
-
-  belongs_to :user
-  has_many :orientations
 
   RELATIONSHIP_STATUS = [
     "Single",
@@ -35,6 +10,7 @@ class Personality < ActiveRecord::Base
   RELATIONSHIP_TYPE = ["Monogamous", "Non-monogamous"]
 
   FEET = [3, 4, 5, 6, 7]
+
   INCHES = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
   BODY_TYPE = ["Rather not say", "Thin", "Overweight", "Average Build"]
@@ -89,17 +65,45 @@ class Personality < ActiveRecord::Base
 
   LANGUAGES = ["English", "Other"]
 
+  validates :user_id, :status, presence: true
+  validates :user_id, uniqueness: true
+  validates :status, inclusion: RELATIONSHIP_STATUS, allow_nil: true
+  validates :relationship_type, inclusion: RELATIONSHIP_TYPE, allow_nil: true
+  validates :feet, inclusion: FEET, allow_nil: true
+  validates :inches, inclusion: INCHES, allow_nil: true
+  validates :body_type, inclusion: BODY_TYPE, allow_nil: true
+  validates :diet, inclusion: DIET, allow_nil: true
+  validates :smoking, inclusion: SMOKING, allow_nil: true
+  validates :drinking, inclusion: DRINKING, allow_nil: true
+  validates :drugs, inclusion: DRUGS, allow_nil: true
+  validates :religion, inclusion: RELIGION, allow_nil: true
+  validates :sign, inclusion: SIGN, allow_nil: true
+  validates :edu_progress, inclusion: EDU_PROGRESS, allow_nil: true
+  validates :education, inclusion: EDUCATION, allow_nil: true
+  validates :offspring, inclusion: OFFSPRING, allow_nil: true
+  validates :languages, inclusion: LANGUAGES, allow_nil: true
+  validate :min_age_valid
+  validate :max_age_valid
+
+  belongs_to :user
+  has_many :orientations, dependent: :destroy
+  has_many :ethnicities, dependent: :destroy
+
+
+
+
+
   private
 
   def min_age_valid
     if min_age && min_age < 18
-      errors[:min_age] << "Minimum age is 18"
+      errors[:minimum_age] << "is 18"
     end
   end
 
   def max_age_valid
     if max_age && max_age < min_age
-      errors[:max_age] << "Max age must be higher than min age"
+      errors[:maximum_age] << "must be higher than minimum age"
     end
   end
 

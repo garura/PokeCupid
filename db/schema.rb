@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160224014510) do
+ActiveRecord::Schema.define(version: 20160224063000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "ethnicities", force: :cascade do |t|
+    t.integer  "personality_id", null: false
+    t.string   "ethnicity_type", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "ethnicities", ["ethnicity_type", "personality_id"], name: "index_ethnicities_on_ethnicity_type_and_personality_id", unique: true, using: :btree
 
   create_table "orientations", force: :cascade do |t|
     t.integer  "personality_id",   null: false
