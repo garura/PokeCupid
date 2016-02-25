@@ -6,5 +6,11 @@ module.exports = {
       actionType: "ALL_QUALITIES",
       qualities: qualities
     });
+  },
+  sendSession: function(session) {
+    AppDispatcher.dispatch({
+      actionType: "GIVE_SESSION",
+      session: session
+    });
   }
 };

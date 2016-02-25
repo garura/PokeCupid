@@ -1,8 +1,8 @@
 var Store = require('flux/utils').Store;
 var AppDispatcher = require('../dispatcher/dispatcher');
 
-var _qualities = {"orientation": [], "gender": []};
 
+var _qualities = {"orientation": [], "gender": []};
 var QualityStore = new Store(AppDispatcher);
 
 QualityStore.all = function() {
@@ -11,6 +11,7 @@ QualityStore.all = function() {
   _qualities["orientation"].forEach(function(orientation) {
     qualities[0].push(orientation);
   });
+
   _qualities["gender"].forEach(function(gender) {
     qualities[1].push(gender);
   });

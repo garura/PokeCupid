@@ -23,8 +23,12 @@ var genders = {
 }
 
 
-var SignIn = React.createClass({
+var SignInQuality = React.createClass({
   mixins: [LinkedStateMixin],
+
+  contextTypes: {
+    router: React.PropTypes.object.isRequired
+  },
 
   getInitialState: function() {
     return {
@@ -62,7 +66,20 @@ var SignIn = React.createClass({
         qualities[1].push(key);
       }
     });
-    SignInActions.sendQualities(qualities);
+    if (qualities[0][0] && qualities[1][0]) { // at least one option selected for each
+      SignInActions.sendQualities(qualities);
+      this.context.router.replace("user/new");
+    }
+    else if (qualities[0][0]) {
+      this.setState({errors: "Please select at least one gender."});
+    }
+    else if (qualities[1][0]) {
+      this.setState({errors: "Please select at least one orientation."});
+    }
+    else {
+      this.setState({errors: "Please select at least one orientation and gender."})
+    }
+
   },
 
   render: function() {
@@ -94,8 +111,13 @@ var SignIn = React.createClass({
       }
     });
 
+    var errors = this.state.errors;
+
     return(
       <div>
+        <h3>Join the best dating site for Chris on Earth.</h3>
+        <br></br>
+        <h5>{errors}</h5>
         <p>I am a </p>
         {orientationButtons}
         <br></br>
@@ -112,4 +134,4 @@ var SignIn = React.createClass({
 
 });
 
-module.exports = SignIn;
+module.exports = SignInQuality;

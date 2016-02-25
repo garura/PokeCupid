@@ -7,14 +7,13 @@ class Api::UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    birthday = Time.new(params[:year], params[:month], params[:day])
+    @user.birthday = birthday
     if @user.save
       log_in!(@user)
-      # create personality (, etc.) objects with user_id = @user.id?
-      # create gender
-      redirect_to root_url
-    else
-      flash.now[:errors] = @user.errors.full_messages
       render :new
+    else
+      render :empty, status: :unauthorized
     end
   end
 

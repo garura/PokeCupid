@@ -1,16 +1,38 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
+var ReactRouter = require('react-router');
+var hashHistory = require('react-router').hashHistory;
+var IndexRoute = ReactRouter.IndexRoute;
+var Router = ReactRouter.Router;
+var Route = ReactRouter.Route;
 var QualityStore = require('./stores/quality.js');
-var SignInForm = require('./components/sign_in_form');
+var SignInQualityForm = require('./components/sign_in_quality_form');
+var SessionStore = require('./stores/storage');
+var SignInUserForm = require('./components/sign_in_user_form');
+var Home = require('./components/home');
 
-var MyComponent = React.createClass({
+var App = React.createClass({
   render: function () {
     return(
-      <SignInForm />
+      <div>
+        <header><h1>OkChris</h1></header>
+        {this.props.children}
+      </div>
     );
   }
-})
+});
+
+
+// valid_login
+// onEnter={valid_login}
+var routes = (
+  <Route path="/" component={App}>
+    <IndexRoute component={SignInQualityForm}/>
+    <Route path="user/new" component={SignInUserForm}/>
+    <Route path="home" component={Home}/>
+  </Route>
+);
 
 document.addEventListener("DOMContentLoaded", function () {
-  ReactDOM.render(<MyComponent />, document.getElementById('root'));
+  ReactDOM.render(<Router history={hashHistory}>{routes}</Router>, document.getElementById('root'));
 });
