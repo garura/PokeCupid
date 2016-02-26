@@ -13,7 +13,7 @@ var apiUtil = {
         callback();
       },
       error: function(error) {
-        var errors = JSON.parse(error.responseText);
+        var errors = JSON.parse(error.responseText).errors;
         ErrorActions.sendErrors(errors);
       }
     });
@@ -29,7 +29,7 @@ var apiUtil = {
         callback();
       },
       error: function(error) {
-        var errors = JSON.parse(error.responseText);
+        var errors = JSON.parse(error.responseText).errors;
         ErrorActions.sendErrors(errors);
       }
     });

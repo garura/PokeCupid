@@ -24,6 +24,18 @@ var SignInUser = React.createClass({
     }
   },
 
+  componentDidMount: function() {
+    this.errorToken = ErrorStore.addListener(this._errorsUpdated);
+  },
+
+  componentWillUnmount: function() {
+    this.errorToken.remove();
+  },
+
+  _errorsUpdated: function() {
+    this.setState({errors: ErrorStore.all()});
+  },
+
   goToHomepage: function() {
     this.context.router.replace("/home");
   },
@@ -61,19 +73,13 @@ var SignInUser = React.createClass({
     if (year < 2017 && year > 1900) {
       year = true;
     }
-    return {validDay: day, validMonth: month, validYear: year};
+    return (day && month && year)
   },
 
   handleSubmit: function(event) {
     event.preventDefault();
 
-    validDates = this.validDates();
-
-    var day = validDates["validDay"];
-    var month = validDates["validMonth"];
-    var year = validDates["validYear"];
-
-    if (day && month && year) {
+    if (this.validDates()) {
       var userInfo = {
         user: {
           username: this.state.username,
@@ -87,14 +93,31 @@ var SignInUser = React.createClass({
       apiUtil.createUser(userInfo, this.goToHomepage);
     }
     else {
-      ErrorActions.sendErrors(["Invalid Birthdate"]);
+      var basicErrors = ["Invalid Birthdate."];
+      if (!this.state.username) {
+        basicErrors.push("Username can't be blank");
+      }
+      if (this.state.password.length < 6) {
+        basicErrors.push("Password is too short (minimum is 6 characters)");
+      }
+      if (!this.state.email) {
+        basicErrors.push("Email can't be blank");
+      }
+
+      ErrorActions.sendErrors(basicErrors);
     }
   },
 
   render: function() {
+    var errors = this.state.errors.map(function(error, index) {
+      return (<li key={index} className='formErrors'>{error}</li>);
+    });
     return (
       <div>
         <h3>Almost Done!</h3>
+        <ul>
+          {errors}
+        </ul>
         <form className='userInfoForm' onSubmit={this.handleSubmit}>
           <label>Username: <input type='text' valueLink={this.linkState('username')}/>
           </label>
