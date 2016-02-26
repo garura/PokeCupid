@@ -1,0 +1,5 @@
+Todos:
+
+- Move logic from handleSubmit into helper methods, maybe a utilities.js file
+- Same thing for sendQualities in SignInQuality
+- Break render methods into helper methods

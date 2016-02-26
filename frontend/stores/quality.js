@@ -2,7 +2,11 @@ var Store = require('flux/utils').Store;
 var AppDispatcher = require('../dispatcher/dispatcher');
 
 
-var _qualities = {"orientation": [], "gender": []};
+var _qualities = {
+  "orientation": [],
+  "gender": []
+};
+
 var QualityStore = new Store(AppDispatcher);
 
 QualityStore.all = function() {

@@ -3,15 +3,33 @@ var LinkedStateMixin = require('react-addons-linked-state-mixin');
 var apiUtil = require('../util/apiUtil');
 
 var SignInAccount = React.createClass({
+  mixins: [LinkedStateMixin],
+
+  contextTypes: {
+    router: React.PropTypes.object.isRequired
+  },
+
+  getInitialState: function() {
+    return {
+      username: '',
+      password: '',
+      errors: []};
+  },
 
   goToHomepage: function() {
     this.context.router.replace("/home");
   },
 
-  handleSubmit: function() {
-    var userInfo = {user: {username: this.state.username,
-                           password: this.state.password}};
-    apiUtil.verifyUser( userInfo, this.goToHomepage);
+  handleSubmit: function(event) {
+    event.preventDefault();
+    var userInfo = {
+      user: {
+        username: this.state.username,
+        password: this.state.password
+      }
+    };
+
+    apiUtil.verifyUser(userInfo, this.goToHomepage);
   },
 
   render: function() {

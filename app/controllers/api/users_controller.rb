@@ -7,13 +7,13 @@ class Api::UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    birthday = Time.new(params[:year], params[:month], params[:day])
-    @user.birthday = birthday
+    @user.birthday = Time.new(params[:year], params[:month], params[:day])
     if @user.save
       log_in!(@user)
       render :new
     else
-      render :empty, status: :unauthorized
+      @errors = @user.errors.full_messages
+      render json: {errors: @errors}, status: :unauthorized
     end
   end
 

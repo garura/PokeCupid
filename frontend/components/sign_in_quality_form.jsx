@@ -58,6 +58,7 @@ var SignInQuality = React.createClass({
   sendQualities: function() {
     var qualities = [ [], [] ];
     var that = this;
+
     Object.keys(this.state).forEach(function(key) {
       if (orientations[key] && that.state[key]) {
         qualities[0].push(key);
@@ -66,6 +67,7 @@ var SignInQuality = React.createClass({
         qualities[1].push(key);
       }
     });
+
     if (qualities[0][0] && qualities[1][0]) { // at least one option selected for each
       SignInActions.sendQualities(qualities);
       this.context.router.replace("user/new");
@@ -82,7 +84,7 @@ var SignInQuality = React.createClass({
 
   },
 
-  render: function() {
+  generateButtons: function() {
     var that = this;
 
     var orientationButtons = Object.keys(that.state).map(function(key, index) {
@@ -111,7 +113,15 @@ var SignInQuality = React.createClass({
       }
     });
 
+    return {oButtons: orientationButtons, gButtons: genderButtons};
+  },
+
+  render: function() {
     var errors = this.state.errors;
+
+    var buttons = this.generateButtons();
+    var orientationButtons = buttons["oButtons"];
+    var genderButtons = buttons["gButtons"];
 
     return(
       <div>

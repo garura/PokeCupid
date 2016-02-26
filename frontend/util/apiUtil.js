@@ -1,4 +1,5 @@
 var SignInActions = require('../actions/sign_in_actions');
+var ErrorActions = require('../actions/error_actions');
 
 var apiUtil = {
   verifyUser: function(userInfo, callback) {
@@ -7,11 +8,13 @@ var apiUtil = {
       method: "POST",
       data: userInfo,
       success: function(session) {
+        ErrorActions.clearErrors();
         SignInActions.sendSession(session);
         callback();
       },
       error: function(error) {
-        // error store error json from session controller
+        var errors = JSON.parse(error.responseText);
+        ErrorActions.sendErrors(errors);
       }
     });
   },
@@ -21,11 +24,13 @@ var apiUtil = {
       method: "POST",
       data: userInfo,
       success: function(session) {
+        ErrorActions.clearErrors();
         SignInActions.sendSession(session);
-        callback(); // change history stuff
+        callback();
       },
       error: function(error) {
-        // update error store with error json info from UsersController
+        var errors = JSON.parse(error.responseText);
+        ErrorActions.sendErrors(errors);
       }
     });
   }

@@ -17,11 +17,14 @@ ErrorStore.__onDispatch = function(payload) {
   switch (payload.actionType) {
     case "RECEIVE_ERRORS":
       resetErrors(payload.errors);
+      ErrorStore.__emitChange();
       break;
     case "CLEAR_ERRORS":
       resetErrors([]);
+      ErrorStore.__emitChange();
       break;
   }
 };
 
+window.ErrorStore = ErrorStore;
 module.exports = ErrorStore;

@@ -12,7 +12,7 @@ class Api::SessionsController < ApplicationController
       log_in!(@user)
       render :show
     else
-      render :empty, status: :unauthorized
+      render json: {errors: ["Invalid Username/Password combination"]}, status: :unauthorized
     end
   end
 

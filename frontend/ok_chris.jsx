@@ -6,9 +6,11 @@ var IndexRoute = ReactRouter.IndexRoute;
 var Router = ReactRouter.Router;
 var Route = ReactRouter.Route;
 var QualityStore = require('./stores/quality.js');
-var SignInQualityForm = require('./components/sign_in_quality_form');
 var SessionStore = require('./stores/storage');
+var ErrorStore = require('./stores/errors');
+var SignInQualityForm = require('./components/sign_in_quality_form');
 var SignInUserForm = require('./components/sign_in_user_form');
+var SignInAccountForm = require('./components/sign_in_account');
 var Home = require('./components/home');
 
 var App = React.createClass({
@@ -30,6 +32,7 @@ var routes = (
     <IndexRoute component={SignInQualityForm}/>
     <Route path="user/new" component={SignInUserForm}/>
     <Route path="home" component={Home}/>
+    <Route path="signin" component={SignInAccountForm}/>    
   </Route>
 );
 

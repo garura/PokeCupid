@@ -1,6 +1,8 @@
 var React = require('react');
 var LinkedStateMixin = require('react-addons-linked-state-mixin');
 var apiUtil = require('../util/apiUtil');
+var ErrorActions = require('../actions/error_actions');
+
 
 
 var SignInUser = React.createClass({
@@ -17,7 +19,8 @@ var SignInUser = React.createClass({
       email: '',
       day: '',
       month: '',
-      year: ''
+      year: '',
+      errors: []
     }
   },
 
@@ -34,8 +37,7 @@ var SignInUser = React.createClass({
     return true;
   },
 
-  handleSubmit: function(event) {
-    event.preventDefault();
+  validDates: function() {
     var day = this.state.day;
     var month = this.state.month;
     var year = this.state.year;
@@ -59,19 +61,33 @@ var SignInUser = React.createClass({
     if (year < 2017 && year > 1900) {
       year = true;
     }
+    return {validDay: day, validMonth: month, validYear: year};
+  },
+
+  handleSubmit: function(event) {
+    event.preventDefault();
+
+    validDates = this.validDates();
+
+    var day = validDates["validDay"];
+    var month = validDates["validMonth"];
+    var year = validDates["validYear"];
 
     if (day && month && year) {
-      var userInfo = { user: {username: this.state.username,
-                              password: this.state.password,
-                              email: this.state.email},
-                       day: this.state.day,
-                       month: this.state.month,
-                       year: this.state.year
+      var userInfo = {
+        user: {
+          username: this.state.username,
+          password: this.state.password,
+          email: this.state.email
+        },
+        day: this.state.day,
+        month: this.state.month,
+        year: this.state.year
       };
       apiUtil.createUser(userInfo, this.goToHomepage);
     }
     else {
-      // error store action
+      ErrorActions.sendErrors(["Invalid Birthdate"]);
     }
   },
 
