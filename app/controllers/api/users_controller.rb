@@ -1,10 +1,5 @@
 class Api::UsersController < ApplicationController
 
-  def new
-    redirect_to root_url if current_user
-    @user = User.new
-  end
-
   def create
     @user = User.new(user_params)
     @user.birthday = Time.new(params[:year], params[:month], params[:day])
@@ -26,7 +21,7 @@ class Api::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :email, :password)
+    params.require(:user).permit(:username, :email, :password, :type_one, :type_two)
   end
 
 end
