@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
     :birthday, :type_one, presence: true
   validates :username, :email, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
-  validates :type_one, inclusion: POKEMON_TYPES
+  validates :type_one, inclusion: POKEMON_TYPES, allow_nil: true
   validates :type_two, inclusion: POKEMON_TYPES, allow_nil: true
   validate :valid_birthday
   validate :valid_types
