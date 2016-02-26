@@ -21,7 +21,7 @@ var App = React.createClass({
     return(
       <div>
         <NavBar />
-        <header><h1>OkChris</h1></header>
+        <header><h1>PokéCupid</h1></header>
         {this.props.children}
       </div>
     );
@@ -33,11 +33,11 @@ var App = React.createClass({
 // onEnter={valid_login}
 var routes = (
   <Route path="/" component={App}>
-    <IndexRoute component={SignInQualityForm}/>
+    <IndexRoute component={SignInPreferencesForm}/>
     <Route path="user/new" component={SignInUserForm}/>
     <Route path="home" component={Home}/>
     <Route path="signin" component={SignInAccountForm}/>
-    <Route path="prefs" component={SignInPreferencesForm}/>
+    <Route path="new" component={SignInPreferencesForm}/>
   </Route>
 );
 

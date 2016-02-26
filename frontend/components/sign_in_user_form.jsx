@@ -42,7 +42,8 @@ var SignInUser = React.createClass({
       year: '',
       type_one: '',
       type_two: '',
-      errors: []
+      errors: [],
+      typeErrors: ""
     }
   },
 
@@ -166,15 +167,46 @@ var SignInUser = React.createClass({
 
   handleClicked: function(event) {
     event.preventDefault();
-    key = event.target.value;
-    
+    var value = event.target.value;
+    if (this.selectCount == 0) { // no types chosen yet
+      this.setState({type_one: value})
+      this.selectCount++;
+    }
+    else if (this.selectCount == 1) {
+      if (this.state.type_one === value) { // clicking chosen
+        this.setState({type_one: ""});
+        this.selectCount--;
+      }
+      else {
+        this.setState({type_two: value}); // clicking unchosen
+        this.selectCount++;
+      }
+    }
+    else if (this.selectCount === 2) {
+      if (this.state.type_one === value) {
+        var newFirstType = this.state.type_two;
+        this.setState({type_one: newFirstType});
+        this.setState({type_two: ""});
+        this.selectCount--;
+        this.setState({typeErrors: ""});
+      }
+      else if (this.state.type_two === value) {
+        this.setState({type_two: ""});
+        this.selectCount--;
+        this.setState({typeErrors: ""});
+      }
+      else {
+        if (this.state.typeErrors === "") {
+          this.setState({typeErrors: "Maximum of two types!"});
+        }
+      }
+    }
   },
 
   render: function() {
     var errors = this.state.errors.map(function(error, index) {
       return (<li key={index} className='formErrors'>{error}</li>);
     });
-
     var buttons = this.generateButtons();
     return (
       <div>
@@ -196,6 +228,12 @@ var SignInUser = React.createClass({
                             <input type='text' placeholder='DD' maxLength="2" valueLink={this.linkState('day')}/>
                             <input type='text' placeholder='YYYY' maxLength="4" valueLink={this.linkState('year')}/>
           </label>
+          <br></br>
+          <label>Your Type(s):</label>
+          {buttons}
+          <br></br>
+          <p id='typeErrors'>{this.state.typeErrors}</p>
+          <br></br>
           <input type='submit' value='Sign Up!'/>
         </form>
       </div>
