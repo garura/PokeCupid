@@ -2,6 +2,12 @@ class Api::UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    if @user.type_one == ""
+      @user.type_one = nil
+    end
+    if @user.type_two == ""
+      @user.type_two = nil
+    end
     @user.birthday = Time.new(params[:year], params[:month], params[:day])
     if @user.save
       log_in!(@user)

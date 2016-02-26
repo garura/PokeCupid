@@ -68,12 +68,14 @@ class User < ActiveRecord::Base
 
   def valid_birthday
     if birthday && (Time.now - birthday.to_time) < 567648000
-      errors[:birthday] << "invalid. Must be at least 18 years old"
+      errors[:birthday] << "invalid. Must be at least level 18"
+    elsif birthday && (Time.now - birthday.to_time) > 3153600000
+      errors[:birthday] << "invalid. Maximum level is 100"
     end
   end
 
   def valid_types
-    if (type_one && type_two) && type_one == type_two
+    if (type_one && type_two) && type_one == type_two && type_one != ""
       errors[:type] << "combination invalid. No duplicate typing."
     end
   end

@@ -3,26 +3,47 @@ var LinkedStateMixin = require('react-addons-linked-state-mixin');
 var apiUtil = require('../util/apiUtil');
 var ErrorActions = require('../actions/error_actions');
 
-var pokeTypes = {
-  "Normal": true,
-  "Fighting": true,
-  "Flying": true,
-  "Poison": true,
-  "Ground": true,
-  "Rock": true,
-  "Bug": true,
-  "Ghost": true,
-  "Steel": true,
-  "Fire": true,
-  "Water": true,
-  "Grass": true,
-  "Electric": true,
-  "Psychic": true,
-  "Ice": true,
-  "Dragon": true,
-  "Dark": true,
-  "Fairy": true
-};
+// var pokeTypes = {
+//   "Normal": true,
+//   "Fighting": true,
+//   "Flying": true,
+//   "Poison": true,
+//   "Ground": true,
+//   "Rock": true,
+//   "Bug": true,
+//   "Ghost": true,
+//   "Steel": true,
+//   "Fire": true,
+//   "Water": true,
+//   "Grass": true,
+//   "Electric": true,
+//   "Psychic": true,
+//   "Ice": true,
+//   "Dragon": true,
+//   "Dark": true,
+//   "Fairy": true
+// };
+
+var pokeTypes = [
+  "Normal",
+  "Fighting",
+  "Flying",
+  "Poison",
+  "Ground",
+  "Rock",
+  "Bug",
+  "Ghost",
+  "Steel",
+  "Fire",
+  "Water",
+  "Grass",
+  "Electric",
+  "Psychic",
+  "Ice",
+  "Dragon",
+  "Dark",
+  "Fairy"
+];
 
 var SignInUser = React.createClass({
   mixins: [LinkedStateMixin],
@@ -40,8 +61,8 @@ var SignInUser = React.createClass({
       day: '',
       month: '',
       year: '',
-      type_one: '',
-      type_two: '',
+      type_one: null,
+      type_two: null,
       errors: [],
       typeErrors: ""
     }
@@ -93,10 +114,10 @@ var SignInUser = React.createClass({
     if (month > 0 && month < 13) {
       month = true;
     }
-    if (year < 2017 && year > 1900) {
+    if (year < 2017) {
       year = true;
     }
-    return (day && month && year)
+    return (day === true && month === true && year === true)
   },
 
   generateErrors: function() {
@@ -110,7 +131,7 @@ var SignInUser = React.createClass({
     if (this.state.password.length < 6) {
       basicErrors.push("Password is too short (minimum is 6 characters)");
     }
-    basicErrors.push("Birthday invalid. Must be at least 18 years old");
+    basicErrors.push("Birthday invalid. Must be at least level 18");
     if (!this.state.type_one) {
       basicErrors.push("Type one can't be blank");
     }
@@ -145,7 +166,7 @@ var SignInUser = React.createClass({
   generateButtons: function() {
     var that = this;
 
-    var typeButtons = Object.keys(pokeTypes).map(function(key, index) {
+    var typeButtons = pokeTypes.map(function(key, index) {
       if (that.state.type_one == key || that.state.type_two == key) {
         var name = "button_true";
       }
@@ -174,7 +195,7 @@ var SignInUser = React.createClass({
     }
     else if (this.selectCount == 1) {
       if (this.state.type_one === value) { // clicking chosen
-        this.setState({type_one: ""});
+        this.setState({type_one: null});
         this.selectCount--;
       }
       else {
@@ -186,14 +207,14 @@ var SignInUser = React.createClass({
       if (this.state.type_one === value) {
         var newFirstType = this.state.type_two;
         this.setState({type_one: newFirstType});
-        this.setState({type_two: ""});
+        this.setState({type_two: null});
         this.selectCount--;
-        this.setState({typeErrors: ""});
+        this.setState({typeErrors: null});
       }
       else if (this.state.type_two === value) {
-        this.setState({type_two: ""});
+        this.setState({type_two: null});
         this.selectCount--;
-        this.setState({typeErrors: ""});
+        this.setState({typeErrors: null});
       }
       else {
         if (this.state.typeErrors === "") {
