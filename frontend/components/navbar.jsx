@@ -50,16 +50,23 @@ var NavBar = React.createClass({
     this.goToSignInPage();
   },
 
+  signUp: function() {
+    // clear error store
+    ErrorActions.clearErrors();
+    // go to sign in page
+    this.goToSignUpPage();
+  },
+
   createSessionButton: function() {
     var text;
     var destination;
     if (window.location.hash.indexOf("signin") > -1) {
       text = "Sign Up!";
-      destination = this.goToSignUpPage;
+      destination = this.signUp;
     }
     else {
       text = "Sign In!";
-      destination = this.goToSignInPage
+      destination = this.signIn;
     }
     if (this.state.current_user.id) {
       return (<button type='button'
