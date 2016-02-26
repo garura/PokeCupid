@@ -7,6 +7,12 @@ module.exports = {
       qualities: qualities
     });
   },
+  sendPreferences: function(preferences) {
+    AppDispatcher.dispatch({
+      actionType: "ALL_PREFERENCES",
+      preferences: preferences
+    });
+  },
   sendSession: function(session) {
     AppDispatcher.dispatch({
       actionType: "GIVE_SESSION",

@@ -8,10 +8,12 @@ var Route = ReactRouter.Route;
 var QualityStore = require('./stores/quality.js');
 var SessionStore = require('./stores/session');
 var ErrorStore = require('./stores/errors');
+var PreferenceStore = require("./stores/preferences");
 var NavBar = require('./components/navbar');
 var SignInQualityForm = require('./components/sign_in_quality_form');
 var SignInUserForm = require('./components/sign_in_user_form');
 var SignInAccountForm = require('./components/sign_in_account');
+var SignInPreferencesForm = require('./components/sign_in_preference_form');
 var Home = require('./components/home');
 
 var App = React.createClass({
@@ -35,6 +37,7 @@ var routes = (
     <Route path="user/new" component={SignInUserForm}/>
     <Route path="home" component={Home}/>
     <Route path="signin" component={SignInAccountForm}/>
+    <Route path="prefs" component={SignInPreferencesForm}/>
   </Route>
 );
 
