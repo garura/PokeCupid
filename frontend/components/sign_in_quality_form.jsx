@@ -118,7 +118,6 @@ var SignInQuality = React.createClass({
 
   render: function() {
     var errors = this.state.errors;
-
     var buttons = this.generateButtons();
     var orientationButtons = buttons["oButtons"];
     var genderButtons = buttons["gButtons"];

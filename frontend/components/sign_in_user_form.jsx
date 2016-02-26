@@ -76,6 +76,22 @@ var SignInUser = React.createClass({
     return (day && month && year)
   },
 
+  generateErrors: function() {
+    var basicErrors = [];
+    if (!this.state.username) {
+      basicErrors.push("Username can't be blank");
+    }
+    if (!this.state.email) {
+      basicErrors.push("Email can't be blank");
+    }
+    if (this.state.password.length < 6) {
+      basicErrors.push("Password is too short (minimum is 6 characters)");
+    }
+    basicErrors.push("Birthday invalid. Must be at least 18 years old");
+
+    return basicErrors;
+  },
+
   handleSubmit: function(event) {
     event.preventDefault();
 
@@ -93,18 +109,8 @@ var SignInUser = React.createClass({
       apiUtil.createUser(userInfo, this.goToHomepage);
     }
     else {
-      var basicErrors = ["Invalid Birthdate."];
-      if (!this.state.username) {
-        basicErrors.push("Username can't be blank");
-      }
-      if (this.state.password.length < 6) {
-        basicErrors.push("Password is too short (minimum is 6 characters)");
-      }
-      if (!this.state.email) {
-        basicErrors.push("Email can't be blank");
-      }
-
-      ErrorActions.sendErrors(basicErrors);
+      var errors = this.generateErrors();
+      ErrorActions.sendErrors(errors);
     }
   },
 
