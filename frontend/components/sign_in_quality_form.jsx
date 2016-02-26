@@ -70,7 +70,7 @@ var SignInQuality = React.createClass({
 
     if (qualities[0][0] && qualities[1][0]) { // at least one option selected for each
       SignInActions.sendQualities(qualities);
-      this.context.router.replace("user/new");
+      this.context.router.push("user/new");
     }
     else if (qualities[0][0]) {
       this.setState({errors: "Please select at least one gender."});

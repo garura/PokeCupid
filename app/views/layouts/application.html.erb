@@ -8,14 +8,6 @@
 </head>
 <body>
 
-  <% if current_user  %>
-    <%= current_user.username%>
-    <%= button_to "Sign Out", api_session_url, method: :delete %>
-  <% end %>
-  <br>
-
-
-
   <% if flash[:errors] %>
     <% flash[:errors].each do |error| %>
       <%= error + ". " %>

@@ -12,5 +12,10 @@ module.exports = {
       actionType: "GIVE_SESSION",
       session: session
     });
+  },
+  clearSession: function() {
+    AppDispatcher.dispatch({
+      actionType: "CLEAR_SESSION"
+    });
   }
 };

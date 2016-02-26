@@ -37,7 +37,7 @@ var SignInUser = React.createClass({
   },
 
   goToHomepage: function() {
-    this.context.router.replace("/home");
+    this.context.router.push("/home");
   },
 
   validNumber: function(string) {

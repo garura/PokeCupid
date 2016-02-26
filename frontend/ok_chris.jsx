@@ -6,8 +6,9 @@ var IndexRoute = ReactRouter.IndexRoute;
 var Router = ReactRouter.Router;
 var Route = ReactRouter.Route;
 var QualityStore = require('./stores/quality.js');
-var SessionStore = require('./stores/storage');
+var SessionStore = require('./stores/session');
 var ErrorStore = require('./stores/errors');
+var NavBar = require('./components/navbar');
 var SignInQualityForm = require('./components/sign_in_quality_form');
 var SignInUserForm = require('./components/sign_in_user_form');
 var SignInAccountForm = require('./components/sign_in_account');
@@ -17,6 +18,7 @@ var App = React.createClass({
   render: function () {
     return(
       <div>
+        <NavBar />
         <header><h1>OkChris</h1></header>
         {this.props.children}
       </div>
@@ -32,7 +34,7 @@ var routes = (
     <IndexRoute component={SignInQualityForm}/>
     <Route path="user/new" component={SignInUserForm}/>
     <Route path="home" component={Home}/>
-    <Route path="signin" component={SignInAccountForm}/>    
+    <Route path="signin" component={SignInAccountForm}/>
   </Route>
 );
 
