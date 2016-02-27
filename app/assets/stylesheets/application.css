@@ -43,12 +43,14 @@
   display: inline-block;
   padding: 10px;
   color: white;
+  line-height: 55px;
   background-color: #ff3333;
 }
 
 #navBarButton {
   padding: 10px;
   color: white;
+  z-index: 102;
   /*transition: background 0.2s ease-out;*/
   transition: background-color .7s;
 }
@@ -77,15 +79,21 @@
   display: inline-block;
   font-size: 32px;
   text-align: center;
-  position: fixed;
+  position: relative;
   font-family: Pokemon;
   color: yellow;
   letter-spacing: .05em;
-  z-index: 101;
+  z-index: 100;
   height: 75px;
-  width: 100%;
+  width: 200px;
+  top: -70px;
+  margin-left: 500px;
   line-height: 75px;
   text-shadow: -1.5px 0 blue, 0 1.5px blue, 1.5px 0 blue, 0 -1.5px blue;
+}
+
+.tester {
+  position: relative;
 }
 
 .logo {
@@ -108,7 +116,7 @@
 
  #seaking {
    height: 50px;
-   width: 50px;
+   : 50px;
  }
 
 body {

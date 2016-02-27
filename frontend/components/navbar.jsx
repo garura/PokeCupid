@@ -108,11 +108,12 @@ var NavBar = React.createClass({
     var navMessage = this.createSessionMessage();
 
     return (
-      <div>
-        <header id='pokeCupidHeader'><h1>PokéCupid !</h1></header>
+      <div className='tester'>
+
         <div id='navBarDiv'>
           {navMessage}
           {sessionButton}
+          <header ><h1 id='pokeCupidHeader'>PokéCupid !</h1></header>
         </div>
       </div>
 

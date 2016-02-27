@@ -85,8 +85,7 @@ var SignInPreferences = React.createClass({
       return (
         <button type="button"
                 key={index}
-                id={'button_' + key}
-                className={"button_" + that.state[key]}
+                className={"button_" + key + " button_" + that.state[key]}
                 onClick={that.handleClicked}
                 value={key}>{key}
         </button>
