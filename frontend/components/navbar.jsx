@@ -70,7 +70,7 @@ var NavBar = React.createClass({
     }
     if (this.state.current_user.id) {
       return (<button type='button'
-                      id='signOutButton'
+                      id='navBarButton'
                       onClick={this.signOut}>
               Sign Out!
               </button>
@@ -78,7 +78,7 @@ var NavBar = React.createClass({
     }
     else {
       return (<button type='button'
-                      id='signInButton'
+                      id='navBarButton'
                       onClick={destination}>
               {text}
               </button>
@@ -96,10 +96,10 @@ var NavBar = React.createClass({
       text = "Have an account?";
     }
     if (username) {
-      return (<p id='usernameNav'>{username}</p>);
+      return (<p id='navBarMessage'>{username}</p>);
     }
     else {
-      return (<p id='noUserNav'>{text}</p>)
+      return (<p id='navBarMessage'>{text}</p>)
     }
   },
 
@@ -109,9 +109,13 @@ var NavBar = React.createClass({
 
     return (
       <div>
-        {navMessage}
-        {sessionButton}
+        <header id='pokeCupidHeader'><h1>PokéCupid !</h1></header>
+        <div id='navBarDiv'>
+          {navMessage}
+          {sessionButton}
+        </div>
       </div>
+
     );
   }
 

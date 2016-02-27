@@ -21,8 +21,9 @@ var App = React.createClass({
     return(
       <div>
         <NavBar />
-        <header><h1>PokéCupid</h1></header>
-        {this.props.children}
+        <div id='nonNavStuff'>
+          {this.props.children}
+        </div>
       </div>
     );
   }

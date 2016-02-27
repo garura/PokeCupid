@@ -14,6 +14,94 @@
  *= require_self
  */
 
+ html, body, header, nav, h1, a,
+ ul, li, strong, main, button, i,
+ section, img, div, h2, p, form,
+ fieldset, label, input, textarea,
+ span, article, footer, time, small {
+   margin: 0;
+   padding: 0;
+   border: 0;
+   outline: 0;
+   font: inherit;
+   color: inherit;
+   text-align: inherit;
+   text-decoration: inherit;
+   vertical-align: inherit;
+   box-sizing: inherit;
+   background: transparent;
+ }
+
+ @font-face {
+  font-family: "Pokemon";
+  src:url('./Pokemon Solid.ttf');
+ }
+
+/* nav bar css */
+
+#navBarMessage {
+  display: inline-block;
+  padding: 10px;
+  color: white;
+  background-color: #ff3333;
+}
+
+#navBarButton {
+  padding: 10px;
+  color: white;
+  /*transition: background 0.2s ease-out;*/
+  transition: background-color .7s;
+}
+
+#navBarButton:hover {
+  background-color: lightblue;
+  transition: 0.2s;
+  cursor: pointer;
+  z-index: 102;
+}
+
+ #navBarDiv {
+   border-bottom: solid 4px white;
+   width: 100%;
+   background-color: #ff3333;
+   z-index: 100;
+   position: fixed;
+   height: 75px;
+
+ }
+
+/* app header */
+/* TODO: make buttons interact */
+
+#pokeCupidHeader {
+  display: inline-block;
+  font-size: 32px;
+  text-align: center;
+  position: fixed;
+  font-family: Pokemon;
+  color: yellow;
+  letter-spacing: .05em;
+  z-index: 101;
+  height: 75px;
+  width: 100%;
+  line-height: 75px;
+  text-shadow: -1.5px 0 blue, 0 1.5px blue, 1.5px 0 blue, 0 -1.5px blue;
+}
+
+.logo {
+  letter-spacing: .06em;
+  z-index: 100;
+}
+
+#nonNavStuff {
+  display: inline-block;
+  position: relative;
+  top: 79px;
+}
+
+
+
+
  .button_true {
    background-color: lightblue;
  }
@@ -22,3 +110,7 @@
    height: 50px;
    width: 50px;
  }
+
+body {
+  /*background-color: #ff3333;*/
+}

@@ -102,7 +102,7 @@ var SignInPreferences = React.createClass({
 
     return(
       <div>
-        <h3>Join the best dating site for Pokemon on Earth.</h3>
+        <h3>Join the best dating site for Pokémon on Earth.</h3>
         <br></br>
         <h5>{errors}</h5>
         <p>I'm <img id='seaking' src="http://cdn.bulbagarden.net/upload/thumb/6/6a/119Seaking.png/250px-119Seaking.png"
