@@ -100,14 +100,14 @@ var SignInPreferences = React.createClass({
     var buttons = this.generateButtons();
 
     return(
-      <div>
-        <h3>Join the best dating site for Pokémon on Earth.</h3>
+      <div id='pref_form'>
+        <h3 id='slogan'>Join the best dating site for Pokémon on Earth.</h3>
         <br></br>
         <h5>{errors}</h5>
-        <p>I'm <img id='seaking' src="http://cdn.bulbagarden.net/upload/thumb/6/6a/119Seaking.png/250px-119Seaking.png"
+        <p id='seeking'>I'm <img id='seaking' src="http://cdn.bulbagarden.net/upload/thumb/6/6a/119Seaking.png/250px-119Seaking.png"
           alt='Seeking'></img> (seeking)</p>
         <br></br>
-        {buttons}
+        <div id='pref_buttons'>{buttons}</div>
         <br></br>
         <button type="button"
                 id="signUp_preferences_confirm"

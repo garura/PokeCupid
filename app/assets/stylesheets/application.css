@@ -37,6 +37,7 @@
   src:url('./Pokemon Solid.ttf');
  }
 
+
 /* nav bar css */
 
 #navBarMessage {
@@ -51,7 +52,6 @@
   padding: 10px;
   color: white;
   z-index: 102;
-  /*transition: background 0.2s ease-out;*/
   transition: background-color .7s;
 }
 
@@ -72,9 +72,6 @@
 
  }
 
-/* app header */
-/* TODO: make buttons interact */
-
 #pokeCupidHeader {
   display: inline-block;
   font-size: 32px;
@@ -87,38 +84,68 @@
   height: 75px;
   width: 200px;
   top: -70px;
-  margin-left: 500px;
+  margin-left: 525px;
   line-height: 75px;
   text-shadow: -1.5px 0 blue, 0 1.5px blue, 1.5px 0 blue, 0 -1.5px blue;
 }
-
-.tester {
-  position: relative;
-}
-
-.logo {
-  letter-spacing: .06em;
-  z-index: 100;
-}
+/* end navBar stuff */
 
 #nonNavStuff {
   display: inline-block;
   position: relative;
   top: 79px;
+  width: 100%;
 }
 
+/* pref form */
 
+#slogan {
+  text-align: center;
+  width: 100%;
+}
 
+#pref_form {
+  display: inline-block;
+  padding: 10px;
+  width: 100%;
+  margin: auto;
+}
+
+#pref_buttons button {
+  padding: 5px;
+  margin: 1px;
+  display: inline-block;
+  width: 70px;
+}
+
+#pref_buttons {
+  display: block;
+  width: 500px;
+  margin: auto;
+}
+
+#signUp_preferences_confirm {
+  display: block;
+  width: auto;
+  margin: auto;
+  padding: 5px;
+  background-color: lightgreen;
+}
 
  .button_true {
    background-color: lightblue;
  }
 
+
+ #seeking {
+   text-align: center;
+ }
+
  #seaking {
-   height: 50px;
-   : 50px;
+   height: 100px;
+   : 100px;
  }
 
 body {
-  /*background-color: #ff3333;*/
+  background-color: #ff8080;
 }
