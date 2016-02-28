@@ -116,6 +116,11 @@
   margin: 1px;
   display: inline-block;
   width: 70px;
+  text-align: center;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
 }
 
 #pref_buttons {
