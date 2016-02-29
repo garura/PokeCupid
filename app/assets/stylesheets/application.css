@@ -265,6 +265,11 @@
    : 100px;
  }
 
+ #seekingText {
+   position: relative;
+   left: -30px;
+ }
+
 .prefErrors {
   position: relative;
   text-align: center;

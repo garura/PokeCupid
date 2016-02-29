@@ -167,16 +167,16 @@ var SignInUser = React.createClass({
     var that = this;
 
     var typeButtons = pokeTypes.map(function(key, index) {
+      var name = "button_" + key;
       if (that.state.type_one == key || that.state.type_two == key) {
-        var name = "button_true";
+        name += " button_true";
       }
       else {
-        var name = "button_false";
+        name += " button_false";
       }
       return (
         <button type='button'
                 key={index}
-                id={'button_' + key}
                 className={name}
                 onClick={that.handleClicked}
                 value={key}>{key}
