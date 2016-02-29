@@ -31,7 +31,7 @@ var SignInPreferences = React.createClass({
 
   getInitialState: function() {
     return {
-      "Normal": true,
+      "Normal": false,
       "Fighting": false,
       "Flying": false,
       "Poison": false,
@@ -74,7 +74,7 @@ var SignInPreferences = React.createClass({
       this.context.router.push("user/new");
     }
     else {
-      this.setState({errors: "Please select at least one type."});
+      this.setState({errors: "Please select at least one type!"});
     }
   },
 
@@ -82,14 +82,16 @@ var SignInPreferences = React.createClass({
     var that = this;
 
     var typeButtons = Object.keys(that.state).map(function(key, index) {
-      return (
-        <button type="button"
-                key={index}
-                className={"button_" + key + " button_" + that.state[key]}
-                onClick={that.handleClicked}
-                value={key}>{key}
-        </button>
-      );
+      if (key !== "errors") {
+        return (
+          <button type="button"
+                  key={index}
+                  className={"button_" + key + " button_" + that.state[key]}
+                  onClick={that.handleClicked}
+                  value={key}>{key}
+          </button>
+        );
+      }
     });
 
     return typeButtons;
@@ -103,9 +105,8 @@ var SignInPreferences = React.createClass({
       <div id='pref_form'>
         <h3 id='slogan'>Join the best dating site for Pokémon on Earth.</h3>
         <br></br>
-        <h5>{errors}</h5>
         <p id='seeking'>I'm <img id='seaking' src="http://cdn.bulbagarden.net/upload/thumb/6/6a/119Seaking.png/250px-119Seaking.png"
-          alt='Seeking'></img> (seeking)</p>
+          alt='Seeking'></img> (seeking) :</p>
         <br></br>
         <div id='pref_buttons'>{buttons}</div>
         <br></br>
@@ -114,6 +115,7 @@ var SignInPreferences = React.createClass({
                 onClick={this.sendPreferences}>
                 Continue
         </button>
+        <h5 className='prefErrors'>{errors}</h5>
       </div>
     );
   }

@@ -37,6 +37,10 @@
   src:url('./Pokemon Solid.ttf');
  }
 
+ button {
+   cursor: pointer;
+ }
+
 
 /* nav bar css */
 
@@ -46,18 +50,22 @@
   color: white;
   line-height: 55px;
   background-color: #ff3333;
+  font-family: "Fredoka One";
+  text-shadow: -.8px 0 black, 0 .8px black, .8px 0 black, 0 -.8px black;
 }
 
 #navBarButton {
   padding: 10px;
   color: white;
   z-index: 102;
+  font-family: "Fredoka One";
   transition: background-color .7s;
+  text-shadow: -.8px 0 black, 0 .8px black, .8px 0 black, 0 -.8px black;
 }
 
 #navBarButton:hover {
   background-color: lightblue;
-  transition: 0.2s;
+  transition: 0.15s;
   cursor: pointer;
   z-index: 102;
 }
@@ -74,7 +82,7 @@
 
 #pokeCupidHeader {
   display: inline-block;
-  font-size: 32px;
+  font-size: 40px;
   text-align: center;
   position: relative;
   font-family: Pokemon;
@@ -82,9 +90,9 @@
   letter-spacing: .05em;
   z-index: 100;
   height: 75px;
-  width: 200px;
+  width: 250px;
   top: -70px;
-  margin-left: 525px;
+  margin-left: 41%;
   line-height: 75px;
   text-shadow: -1.5px 0 blue, 0 1.5px blue, 1.5px 0 blue, 0 -1.5px blue;
 }
@@ -102,54 +110,169 @@
 #slogan {
   text-align: center;
   width: 100%;
+  font-family: "Fredoka One";
+  font-size: 40px;
+  color: white;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 #pref_form {
   display: inline-block;
-  padding: 10px;
+  /*padding: 10px;*/
   width: 100%;
   margin: auto;
 }
 
 #pref_buttons button {
+  cursor: pointer;
+  font-family: serif;
+  font-size: 15px;
   padding: 5px;
   margin: 1px;
   display: inline-block;
   width: 70px;
   text-align: center;
+  font-family: "Fredoka One";
+  color: white;
+  border: 1px solid #001a33;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
+
+  text-shadow: -.8px 0 black, 0 .8px black, .8px 0 black, 0 -.8px black;
 }
 
 #pref_buttons {
   display: block;
-  width: 500px;
+  width: 510px;
   margin: auto;
+  /*border: 1px solid #001a33;
+  background-color: #001a33;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;*/
 }
 
 #signUp_preferences_confirm {
   display: block;
+  font-size: 30px;
+  font-family: "Fredoka One";
+
   width: auto;
   margin: auto;
   padding: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
   background-color: lightgreen;
+  color: white;
+  text-shadow: -.8px 0 black, 0 .8px black, .8px 0 black, 0 -.8px black;
+  border: 1px solid black;
+}
+
+.button_Normal {
+  background-color: #aaa7a2;
+}
+
+.button_Fighting {
+  background-color: #bf4040;
+}
+
+.button_Flying {
+  background-color: #9cadf7;
+}
+
+.button_Poison {
+  background-color: #d65cad;
+}
+
+.button_Ground {
+  background-color: #ffcc99;
+}
+
+.button_Rock {
+  background-color: #cc8800;
+}
+
+.button_Bug {
+  background-color: #ace600;
+}
+
+.button_Ghost {
+  background-color: #884dff;
+}
+
+.button_Steel {
+  background-color: #d0d0e1;
+}
+
+.button_Fire {
+  background-color: #ff471a;
+}
+
+.button_Water {
+  background-color: #1a8cff;
+}
+
+.button_Grass {
+  background-color: #39e600;
+}
+
+.button_Electric {
+  background-color: #ffd11a;
+}
+
+.button_Psychic {
+  background-color: #ff6699;
+}
+
+.button_Ice {
+  background-color: #99ffff;
+}
+
+.button_Dragon {
+  background-color: #7966ce;
+}
+
+.button_Dark {
+  background-color: #654f42;
+}
+
+.button_Fairy {
+  background-color: #f7b5f7;
 }
 
  .button_true {
    background-color: lightblue;
+   color: white;
  }
 
-
  #seeking {
+   position: relative;
+   left: 30px;
    text-align: center;
+   font-family: "Fredoka One";
+   font-size: 20px;
+   color: white;
+   text-shadow: -.8px 0 black, 0 .8px black, .8px 0 black, 0 -.8px black;
  }
 
  #seaking {
    height: 100px;
    : 100px;
  }
+
+.prefErrors {
+  position: relative;
+  text-align: center;
+  font-family: "Fredoka One";
+  font-size: 16px;
+  color: white;
+  text-shadow: -.8px 0 black, 0 .8px black, .8px 0 black, 0 -.8px black;
+}
 
 body {
   background-color: #ff8080;
