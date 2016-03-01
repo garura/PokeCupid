@@ -33,6 +33,10 @@ var SignInAccount = React.createClass({
     this.context.router.push("home");
   },
 
+  goToProfile: function() {
+    this.context.router.push("profile");
+  },
+
   handleSubmit: function(event) {
     event.preventDefault();
     var userInfo = {
@@ -41,8 +45,8 @@ var SignInAccount = React.createClass({
         password: this.state.password
       }
     };
-
-    apiUtil.verifyUser(userInfo, this.goToHomepage);
+    // TODO change back to homepage?
+    apiUtil.verifyUser(userInfo, this.goToProfile);
   },
 
   generateErrors: function() {

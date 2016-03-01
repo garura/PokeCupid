@@ -2,6 +2,8 @@ var React = require('react');
 var LinkedStateMixin = require('react-addons-linked-state-mixin');
 var apiUtil = require('../util/apiUtil');
 var ErrorActions = require('../actions/error_actions');
+var ErrorStore = require('../stores/errors');
+var PreferenceStore = require('../stores/preferences');
 
 // var pokeTypes = {
 //   "Normal": true,
@@ -141,7 +143,6 @@ var SignInUser = React.createClass({
 
   handleSubmit: function(event) {
     event.preventDefault();
-
     if (this.validDates()) {
       var userInfo = {
         user: {
@@ -153,8 +154,10 @@ var SignInUser = React.createClass({
         },
         day: this.state.day,
         month: this.state.month,
-        year: this.state.year
+        year: this.state.year,
+        preferences: PreferenceStore.all()
       };
+
       apiUtil.createUser(userInfo, this.goToHomepage);
     }
     else {

@@ -36,5 +36,4 @@ var apiUtil = {
   }
 };
 
-window.apiUtil = apiUtil;
 module.exports = apiUtil;

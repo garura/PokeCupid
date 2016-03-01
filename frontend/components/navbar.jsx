@@ -39,6 +39,8 @@ var NavBar = React.createClass({
   signOut: function() {
     // clear session store
     SignInActions.clearSession();
+    ErrorActions.clearErrors();
+    SignInActions.sendPreferences([]);
     // go to sign up
     this.goToSignUpPage();
   },
@@ -46,6 +48,7 @@ var NavBar = React.createClass({
   signIn: function() {
     // clear error store
     ErrorActions.clearErrors();
+    SignInActions.sendPreferences([]);
     // go to sign in page
     this.goToSignInPage();
   },
@@ -53,6 +56,7 @@ var NavBar = React.createClass({
   signUp: function() {
     // clear error store
     ErrorActions.clearErrors();
+    SignInActions.sendPreferences([]);
     // go to sign in page
     this.goToSignUpPage();
   },

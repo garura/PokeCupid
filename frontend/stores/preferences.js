@@ -22,5 +22,4 @@ PreferenceStore.__onDispatch = function(payload) {
   }
 };
 
-window.PreferenceStore = PreferenceStore;
 module.exports = PreferenceStore;

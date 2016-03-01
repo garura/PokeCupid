@@ -43,5 +43,4 @@ QualityStore.__onDispatch = function(payload) {
   }
 };
 
-window.QualityStore = QualityStore;
 module.exports = QualityStore;

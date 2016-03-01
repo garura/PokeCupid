@@ -413,6 +413,29 @@
 
 /* home */
 
+/* profile */
+
+#profileDiv {
+  height: auto;
+  padding: 20px;
+  margin: auto;
+  margin-top: 20px;
+  width: 800px;
+  background-color: white;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+#profilePic {
+  display: inline-block;
+}
+
+#current_user_info {
+  display: inline-block;
+}
+
 body {
   background-color: #ff8080;
 }
