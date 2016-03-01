@@ -105,13 +105,19 @@ var SignInPreferences = React.createClass({
       <div id='pref_form'>
         <h3 id='slogan'>Join the best dating site for Pokémon on Earth.</h3>
         <br></br>
-        <p id='seeking'><span id='seekingText'>I'm</span><img id='seaking' src="http://cdn.bulbagarden.net/upload/thumb/6/6a/119Seaking.png/250px-119Seaking.png"
-          alt='Seeking'></img> (seeking) :</p>
+        <p id='seeking'>
+          <span id='i_am'>I'm</span>
+          <img id='seaking' src="http://cdn.bulbagarden.net/upload/thumb/6/6a/119Seaking.png/250px-119Seaking.png"
+          alt='Seeking'></img>
+        <span id='seekingText'>(seeking)</span>
+          <br></br>
+          <span id='someone'>Pokémon who are :</span>
+        </p>
         <br></br>
-        <div id='pref_buttons'>{buttons}</div>
+        <div id='type_buttons'>{buttons}</div>
         <br></br>
         <button type="button"
-                id="signUp_preferences_confirm"
+                id="signUp_confirm"
                 onClick={this.sendPreferences}>
                 Continue
         </button>

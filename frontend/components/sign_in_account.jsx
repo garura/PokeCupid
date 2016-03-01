@@ -51,17 +51,18 @@ var SignInAccount = React.createClass({
     });
     return (
       <div>
-        <h3>Sign In!</h3>
+        <h3 id='slogan' >Sign In!</h3>
         <ul>
           {errors}
         </ul>
-        <form className='accountInfoForm' onSubmit={this.handleSubmit}>
-          <label>Username: <input type='text' valueLink={this.linkState('username')}/>
+        <form className='accountInfoForm userInfoForm' onSubmit={this.handleSubmit}>
+          <label id='username' >Username: <input type='text' valueLink={this.linkState('username')}/>
           </label>
           <br></br>
-          <label>Password: <input type='password' valueLink={this.linkState('password')}/>
+          <label id='password' >Password: <input type='password' valueLink={this.linkState('password')}/>
           </label>
-          <input type='submit' value='Sign In!'/>
+          <br></br>
+          <input id="signUp_confirm" className='account' type='submit' value='Sign In!'/>
         </form>
       </div>
     );

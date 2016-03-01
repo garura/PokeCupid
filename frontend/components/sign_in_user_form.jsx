@@ -209,12 +209,12 @@ var SignInUser = React.createClass({
         this.setState({type_one: newFirstType});
         this.setState({type_two: null});
         this.selectCount--;
-        this.setState({typeErrors: null});
+        this.setState({typeErrors: ""});
       }
       else if (this.state.type_two === value) {
         this.setState({type_two: null});
         this.selectCount--;
-        this.setState({typeErrors: null});
+        this.setState({typeErrors: ""});
       }
       else {
         if (this.state.typeErrors === "") {
@@ -224,39 +224,71 @@ var SignInUser = React.createClass({
     }
   },
 
-  render: function() {
+  errorMessages: function() {
     var errors = this.state.errors.map(function(error, index) {
       return (<li key={index} className='formErrors'>{error}</li>);
     });
+    if (errors.length == 0) {
+      errors = (
+        <div id='noUserErrors'>
+          <img id='totodile' src='http://cdn.bulbagarden.net/upload/d/df/158Totodile.png'></img>
+          <ul>
+          </ul>
+        </div>
+      );
+    }
+    else {
+      errors = (
+        <div id='errorMessage'>
+          <img id='totodile' src='http://cdn.bulbagarden.net/upload/d/df/158Totodile.png'></img>
+          <ul className='userErrors'>
+            {errors}
+          </ul>
+        </div>
+      );
+    }
+
+
+    return errors;
+  },
+
+  render: function() {
+    var errors = this.errorMessages();
     var buttons = this.generateButtons();
+    if (this.state.typeErrors) {
+      var typeErrors = <p id='typeErrors'>{this.state.typeErrors}</p>;
+    }
+    else {
+      var typeErrors = <p id='noTypeErrors'>No Errors</p>;
+    }
+
     return (
-      <div>
-        <h3>Almost Done!</h3>
-        <ul>
-          {errors}
-        </ul>
+      <div id='userForm'>
+        <h3 id='slogan'>Almost Done!</h3>
+
         <form className='userInfoForm' onSubmit={this.handleSubmit}>
           <label>Username: <input type='text' valueLink={this.linkState('username')}/>
           </label>
           <br></br>
-          <label>Password: <input type='password' valueLink={this.linkState('password')}/>
+          <label>Password: <input id='password' type='password' valueLink={this.linkState('password')}/>
           </label>
           <br></br>
-          <label>Email: <input type='text' valueLink={this.linkState('email')}/>
+          <label>Email: <input id='email' type='text' valueLink={this.linkState('email')}/>
           </label>
           <br></br>
-          <label>Birthdate: <input type='text' placeholder='MM' maxLength="2" valueLink={this.linkState('month')}/>
-                            <input type='text' placeholder='DD' maxLength="2" valueLink={this.linkState('day')}/>
-                            <input type='text' placeholder='YYYY' maxLength="4" valueLink={this.linkState('year')}/>
+          <label>Birthdate: <input id='month' type='text' placeholder='MM' maxLength="2" valueLink={this.linkState('month')}/>
+                            <input id='day' type='text' placeholder='DD' maxLength="2" valueLink={this.linkState('day')}/>
+                            <input id='year' type='text' placeholder='YYYY' maxLength="4" valueLink={this.linkState('year')}/>
           </label>
           <br></br>
-          <label>Your Type(s):</label>
-          {buttons}
+          <label>Your Type (s):</label>
+          <div id='type_buttons'>{buttons}</div>
           <br></br>
-          <p id='typeErrors'>{this.state.typeErrors}</p>
+          {typeErrors}
           <br></br>
-          <input type='submit' value='Sign Up!'/>
+          <input id='signUp_confirm' type='submit' value='Sign Up!'/>
         </form>
+        {errors}
       </div>
     );
   }

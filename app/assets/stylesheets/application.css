@@ -92,7 +92,7 @@
   height: 75px;
   width: 250px;
   top: -70px;
-  margin-left: 41%;
+  margin-left: 40.5%;
   line-height: 75px;
   text-shadow: -1.5px 0 blue, 0 1.5px blue, 1.5px 0 blue, 0 -1.5px blue;
 }
@@ -105,7 +105,7 @@
   width: 100%;
 }
 
-/* pref form */
+/* sign in / sign up forms */
 
 #slogan {
   text-align: center;
@@ -118,12 +118,11 @@
 
 #pref_form {
   display: inline-block;
-  /*padding: 10px;*/
   width: 100%;
   margin: auto;
 }
 
-#pref_buttons button {
+#type_buttons button {
   cursor: pointer;
   font-family: serif;
   font-size: 15px;
@@ -133,33 +132,30 @@
   width: 70px;
   text-align: center;
   font-family: "Fredoka One";
-  color: white;
   border: 1px solid #001a33;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
-
   text-shadow: -.8px 0 black, 0 .8px black, .8px 0 black, 0 -.8px black;
 }
 
-#pref_buttons {
+#type_buttons button:hover {
+  color: lightgreen;
+}
+
+#type_buttons {
+  position: relative;
   display: block;
   width: 510px;
   margin: auto;
-  /*border: 1px solid #001a33;
-  background-color: #001a33;
-  border-bottom-right-radius: 5px;
-  border-bottom-left-radius: 5px;
-  border-top-right-radius: 5px;
-  border-top-left-radius: 5px;*/
+  top: 1px;
 }
 
-#signUp_preferences_confirm {
+#signUp_confirm {
   display: block;
-  font-size: 30px;
+  font-size: 28px;
   font-family: "Fredoka One";
-
   width: auto;
   margin: auto;
   padding: 5px;
@@ -171,83 +167,107 @@
   color: white;
   text-shadow: -.8px 0 black, 0 .8px black, .8px 0 black, 0 -.8px black;
   border: 1px solid black;
+  transition: 1.5s;
+}
+
+#signUp_confirm:hover {
+  background-color: lightblue;
+  transition: 0.1s;
 }
 
 .button_Normal {
   background-color: #aaa7a2;
+  color: white;
 }
 
 .button_Fighting {
   background-color: #bf4040;
+  color: white;
 }
 
 .button_Flying {
   background-color: #9cadf7;
+  color: white;
 }
 
 .button_Poison {
   background-color: #d65cad;
+  color: white;
 }
 
 .button_Ground {
   background-color: #ffcc99;
+  color: white;
 }
 
 .button_Rock {
   background-color: #cc8800;
+  color: white;
 }
 
 .button_Bug {
   background-color: #ace600;
+  color: white;
 }
 
 .button_Ghost {
   background-color: #884dff;
+  color: white;
 }
 
 .button_Steel {
   background-color: #d0d0e1;
+  color: white;
 }
 
 .button_Fire {
   background-color: #ff471a;
+  color: white;
 }
 
 .button_Water {
   background-color: #1a8cff;
+  color: white;
 }
 
 .button_Grass {
   background-color: #39e600;
+  color: white;
 }
 
 .button_Electric {
   background-color: #ffd11a;
+  color: white;
 }
 
 .button_Psychic {
   background-color: #ff6699;
+  color: white;
 }
 
 .button_Ice {
   background-color: #99ffff;
+  color: white;
 }
 
 .button_Dragon {
   background-color: #7966ce;
+  color: white;
 }
 
 .button_Dark {
   background-color: #654f42;
+  color: white;
 }
 
 .button_Fairy {
   background-color: #f7b5f7;
+  color: white;
 }
 
  .button_true {
-   background-color: lightblue;
-   color: white;
+   background-color: white;
+   color: lightgreen;
  }
 
  #seeking {
@@ -262,12 +282,24 @@
 
  #seaking {
    height: 100px;
-   : 100px;
+   width: 100px;
+ }
+
+ #i_am {
+   position: relative;
+   left: -25px;
+   top: -20px;
  }
 
  #seekingText {
    position: relative;
-   left: -30px;
+   top: -20px;
+   left: 5px;
+ }
+
+ #someone {
+   position: relative;
+   left: -25px;
  }
 
 .prefErrors {
@@ -278,6 +310,93 @@
   color: white;
   text-shadow: -.8px 0 black, 0 .8px black, .8px 0 black, 0 -.8px black;
 }
+
+/* user sign up form */
+
+.userInfoForm {
+  padding: 5px;
+  text-align: center;
+  font-family: "Fredoka One";
+  font-size: 16px;
+  color: white;
+  text-shadow: -.8px 0 black, 0 .8px black, .8px 0 black, 0 -.8px black;
+}
+
+.userInfoForm input {
+  max-width: 150px;
+  background-color: white;
+  text-align: left;
+  color: black;
+  font-family: 'Signika';
+  margin: 5px;
+  padding: 1px;
+  padding-left: 5px;
+  border: 1px solid black;
+  text-shadow: none, none, none, none;
+}
+
+#email {
+  position: relative;
+  left: 17px;
+}
+
+#password {
+  position: relative;
+  left: 1px;
+}
+
+#month {
+  width: 33px;
+}
+
+#day {
+  width: 28px;
+}
+
+#year {
+  width: 48px;
+}
+
+#noTypeErrors {
+  visibility: hidden;
+}
+
+.userErrors {
+  position: relative;
+  padding: 5px;
+  padding-left: 25px;
+  top: -540px;
+  left: 50px;
+  width: 240px;
+  background-color: white;
+  border: 1px solid black;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  font-family: 'Signika';
+}
+
+#totodile {
+  position: relative;
+  left: 320px;
+  top: -355px;
+  height: 130px;
+  width: 130px;
+}
+
+#noUserErrors {
+  visibility: hidden;
+}
+
+/* account form */
+
+.account {
+  position: relative;
+  top: 10px;
+}
+
+/* home */
 
 body {
   background-color: #ff8080;
