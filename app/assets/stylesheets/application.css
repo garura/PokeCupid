@@ -346,16 +346,25 @@
   left: 1px;
 }
 
+#birthday {
+  position: relative;
+  left: -4px;
+}
+
 #month {
   width: 33px;
 }
 
 #day {
+  position: relative;
+  left: 6px;
   width: 28px;
 }
 
 #year {
-  width: 48px;
+  position: relative;
+  left: 12px;
+  width: 39px;
 }
 
 #noTypeErrors {

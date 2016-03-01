@@ -275,9 +275,10 @@ var SignInUser = React.createClass({
           <label>Email: <input id='email' type='text' valueLink={this.linkState('email')}/>
           </label>
           <br></br>
-          <label>Birthdate: <input id='month' type='text' placeholder='MM' maxLength="2" valueLink={this.linkState('month')}/>
-                            <input id='day' type='text' placeholder='DD' maxLength="2" valueLink={this.linkState('day')}/>
-                            <input id='year' type='text' placeholder='YYYY' maxLength="4" valueLink={this.linkState('year')}/>
+          <label id='birthday'>
+            Birthdate: <input id='month' type='text' placeholder='MM' maxLength="2" valueLink={this.linkState('month')}/>
+                       <input id='day' type='text' placeholder='DD' maxLength="2" valueLink={this.linkState('day')}/>
+                       <input id='year' type='text' placeholder='YYYY' maxLength="4" valueLink={this.linkState('year')}/>
           </label>
           <br></br>
           <label>Your Type (s):</label>
