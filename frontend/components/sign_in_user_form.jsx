@@ -248,7 +248,6 @@ var SignInUser = React.createClass({
       );
     }
 
-
     return errors;
   },
 

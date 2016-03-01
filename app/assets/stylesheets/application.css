@@ -86,7 +86,7 @@
   text-align: center;
   position: relative;
   font-family: Pokemon;
-  color: yellow;
+  color: gold;
   letter-spacing: .05em;
   z-index: 100;
   height: 75px;
@@ -173,6 +173,7 @@
 #signUp_confirm:hover {
   background-color: lightblue;
   transition: 0.1s;
+  cursor: pointer;
 }
 
 .button_Normal {
@@ -394,6 +395,11 @@
 .account {
   position: relative;
   top: 10px;
+}
+
+.lower {
+  position: relative;
+  top: 250px;
 }
 
 /* home */

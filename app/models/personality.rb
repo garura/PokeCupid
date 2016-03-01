@@ -108,8 +108,3 @@ class Personality < ActiveRecord::Base
   end
 
 end
-
-
-# TODO orientation model
-# TODO gender model
-# TODO orientation, gender, birthdate forms on sign up

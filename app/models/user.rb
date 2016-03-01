@@ -32,8 +32,7 @@ class User < ActiveRecord::Base
   validate :valid_types
   after_initialize :ensure_session_token
 
-  has_one :personality, dependent: :destroy
-  has_many :genders, dependent: :destroy
+  has_one :poke_personality, dependent: :destroy
   has_many :poke_preferences, dependent: :destroy
 
   def self.find_by_credentials(username, password)

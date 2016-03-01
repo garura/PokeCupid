@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160226174645) do
+ActiveRecord::Schema.define(version: 20160301005829) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,6 +83,29 @@ ActiveRecord::Schema.define(version: 20160226174645) do
   end
 
   add_index "personalities", ["user_id"], name: "index_personalities_on_user_id", unique: true, using: :btree
+
+  create_table "poke_personalities", force: :cascade do |t|
+    t.integer  "user_id"
+    t.text     "summary"
+    t.text     "daily"
+    t.text     "skills"
+    t.text     "favorites"
+    t.text     "six"
+    t.text     "friday"
+    t.text     "message"
+    t.integer  "min_level",  default: 18
+    t.integer  "max_level",  default: 100
+    t.boolean  "battling",   default: false,   null: false
+    t.boolean  "friendship", default: true,    null: false
+    t.boolean  "breeding",   default: false,   null: false
+    t.boolean  "caught",     default: false,   null: false
+    t.string   "rarecandy",  default: "never"
+    t.boolean  "pokerus",    default: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  add_index "poke_personalities", ["user_id"], name: "index_poke_personalities_on_user_id", unique: true, using: :btree
 
   create_table "poke_preferences", force: :cascade do |t|
     t.integer  "user_id",    null: false

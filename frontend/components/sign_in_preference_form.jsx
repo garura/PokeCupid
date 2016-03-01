@@ -1,5 +1,6 @@
 var React = require('react');
 var SignInActions = require('../actions/sign_in_actions');
+var PreferenceStore = require('../stores/preferences');
 
 
 var pokeTypes = {
@@ -30,7 +31,7 @@ var SignInPreferences = React.createClass({
   },
 
   getInitialState: function() {
-    return {
+    var default_attr = {
       "Normal": false,
       "Fighting": false,
       "Flying": false,
@@ -50,6 +51,11 @@ var SignInPreferences = React.createClass({
       "Dark": false,
       "Fairy": false
     };
+    PreferenceStore.all().forEach(function(key) {
+      default_attr[key] = true;
+    });
+    
+    return default_attr;
   },
 
   handleClicked: function(event) {
