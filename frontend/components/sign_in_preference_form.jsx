@@ -54,14 +54,14 @@ var SignInPreferences = React.createClass({
     PreferenceStore.all().forEach(function(key) {
       default_attr[key] = true;
     });
-    
+
     return default_attr;
   },
 
   handleClicked: function(event) {
     event.preventDefault();
-    key = event.target.value;
-    value = !(this.state[key]);
+    var key = event.target.value;
+    var value = !(this.state[key]);
     this.setState({[key]: value});
   },
 

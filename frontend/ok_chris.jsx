@@ -41,7 +41,9 @@ var routes = (
     <Route path="home" component={Home}/>
     <Route path="signin" component={SignInAccountForm}/>
     <Route path="new" component={SignInPreferencesForm}/>
-    <Route path="profile" component={Profile}/>
+    <Route path="profile" component={Profile}>
+
+    </Route>
   </Route>
 );
 
