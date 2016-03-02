@@ -284,7 +284,7 @@ var SignInUser = React.createClass({
                        <input id='year' type='text' placeholder='YYYY' maxLength="4" valueLink={this.linkState('year')}/>
           </label>
           <br></br>
-          <label>Your Type (s):</label>
+          <label>What are you? (Select up to two types)</label>
           <div id='type_buttons'>{buttons}</div>
           <br></br>
           {typeErrors}
