@@ -86,6 +86,10 @@ var SignInUser = React.createClass({
     this.context.router.push("/home");
   },
 
+  goToProfile: function() {
+    this.context.router.push("profile/about");
+  },
+
   validNumber: function(string) {
     for (var i = 0; i < string.length; i++) {
       if (!string[i].match(/[0-9]/)) {
@@ -158,7 +162,7 @@ var SignInUser = React.createClass({
         preferences: PreferenceStore.all()
       };
 
-      apiUtil.createUser(userInfo, this.goToHomepage);
+      apiUtil.createUser(userInfo, this.goToProfile);
     }
     else {
       var errors = this.generateErrors();

@@ -26,4 +26,5 @@ ErrorStore.__onDispatch = function(payload) {
   }
 };
 
+window.ErrorStore = ErrorStore;
 module.exports = ErrorStore;
