@@ -16,6 +16,9 @@ var SignInAccountForm = require('./components/sign_in_account');
 var SignInPreferencesForm = require('./components/sign_in_preference_form');
 var Home = require('./components/home');
 var Profile = require('./components/profile');
+var About = require('./components/about');
+var Photos = require('./components/photos');
+var Questions = require('./components/questions');
 
 var App = React.createClass({
   render: function () {
@@ -42,7 +45,9 @@ var routes = (
     <Route path="signin" component={SignInAccountForm}/>
     <Route path="new" component={SignInPreferencesForm}/>
     <Route path="profile" component={Profile}>
-
+      <Route path="about" component={About}/>
+      <Route path="photos" component={Photos}/>
+      <Route path="questions" component={Questions}/>
     </Route>
   </Route>
 );

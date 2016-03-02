@@ -34,7 +34,7 @@ var SignInAccount = React.createClass({
   },
 
   goToProfile: function() {
-    this.context.router.push("profile");
+    this.context.router.push("profile/about");
   },
 
   handleSubmit: function(event) {

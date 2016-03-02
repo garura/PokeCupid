@@ -452,6 +452,7 @@
 
 #current_user_info:hover {
   background-color: white;
+  cursor: pointer;
 }
 
 #profileNav {

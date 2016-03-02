@@ -1,7 +1,19 @@
 var React = require('react');
 var SessionStore = require('../stores/session');
 
+
+var selected_values = {
+  0: "profile/about",
+  1: "profile/photos",
+  2: "profile/questions"
+};
+
+
 var Profile = React.createClass({
+
+  contextTypes: {
+    router: React.PropTypes.object.isRequired
+  },
 
   getInitialState: function() {
     var user_info = SessionStore.session() || {};
@@ -10,9 +22,6 @@ var Profile = React.createClass({
 
   profileSubmit: function(event) {
     event.preventDefault();
-
-    // MODAL? ?
-
     console.log("hi u clicked submit :)");
   },
 
@@ -25,20 +34,20 @@ var Profile = React.createClass({
     }
 
     return (
-      <a href="#" id='current_user_info'>
-      <p id='profileName'>{this.state.current_user.username}Garura</p>
-      <p>{Math.floor(this.state.current_user.age)}, {label}</p>
-      <p>change your info!</p>
-    </a>
+      <label href="#" id='current_user_info'>
+        <p id='profileName'>{this.state.current_user.username}</p>
+        <p>{Math.floor(this.state.current_user.age)}, {label}</p>
+        <p>change your info!</p>
+      </label>
     );
   },
 
   handleClick: function(event) {
     event.preventDefault();
-    var selectedIndex = event.target.value;
-    this.setState({selected: selectedIndex});
-    // console.log(event.target.value);
-    // debugger;
+    var selected = event.target.value;
+    this.setState({selected: selected});
+    var path = selected_values[selected];
+    this.context.router.push(path);
   },
 
   generateContentNav: function() {
