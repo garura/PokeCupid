@@ -50,6 +50,7 @@ var SignInAccount = React.createClass({
   },
 
   generateErrors: function() {
+    debugger;
     var errors = this.state.errors.map(function(error, index) {
       return (<li key={index} className='formErrors'>{error}</li>);
     });
