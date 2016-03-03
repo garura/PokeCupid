@@ -33,9 +33,9 @@ var LookingFor = React.createClass({
 
   generateTypeList: function() {
     var types = this.state.preferences.map(function(poke_type, index) {
-      return (<li key={index} className='typeLI'>{poke_type}</li>);
+      return (<li key={index} className='lookingForTypes'>{poke_type}</li>);
     });
-    types = (<ul>Types:{types}</ul>);
+    types = (<ul >Types:{types}</ul>);
 
     return types;
   },
@@ -53,7 +53,7 @@ var LookingFor = React.createClass({
     }
     seeking.join(", ");
     if (seeking) {
-      seeking = <p>For {seeking}</p>;
+      seeking = <p id='lookingForSeeking'>For {seeking}</p>;
     }
 
     return seeking;
@@ -65,11 +65,13 @@ var LookingFor = React.createClass({
 
     // could return this in a click thing
     return (
-      <div>
-        <p>I'm looking for</p>
-        {types}
-        <p>Levels {this.state.personality.min_level}-{this.state.personality.max_level}</p>
-        {seeking}
+      <div id='lookingForDiv'>
+        <p id='lookingForHeader'>I'm looking for <span id='LFSpan'><img className='pencil' src='./assets/pencil.png'></img></span></p>
+        <ul id='lookingForList'>
+          <li>{types}</li>
+          <li><p id='lookingForLevels'>Levels {this.state.personality.min_level}-{this.state.personality.max_level}</p></li>
+          <li>{seeking}</li>
+        </ul>
       </div>
     );
   }

@@ -417,10 +417,10 @@
 
 #profileDiv {
   height: auto;
-  padding: 20px;
+  padding: 30px;
   margin: auto;
   margin-top: 20px;
-  width: 800px;
+  width: 880px;
   background-color: #F3F5F9;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
@@ -489,6 +489,133 @@
 .selected:hover {
   cursor: default;
 }
+
+/* about */
+
+.pencil {
+  position: relative;
+  top: 2px;
+  height: 15px;
+  width: 15px;
+  color: blue;
+}
+
+/* left about */
+#aboutLeft {
+  float: left;
+  width: 525px;
+}
+
+#aboutRight {
+  float: right;
+  width: 300px;
+}
+
+#aboutDiv:after {
+  content: "";
+  display: block;
+  clear:both;
+}
+
+.aboutDetailToggle {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.aboutDetailHeader {
+  display: inline-block;
+  font-size: 20px;
+  font-family: 'Signika';
+  font-weight: bold;
+}
+
+.aboutDetailDiv {
+  margin-top: 40px;
+}
+
+.displayText {
+  font-family: 'Signika';
+  font-size: 16px;
+  margin-top: 5px;
+  font-weight: normal;
+}
+
+.placeholder {
+  font-style: italic;
+  font-size: 15px;
+  color: #bfbfbf;
+}
+
+.aboutTextArea {
+  resize: none;
+  font-family: 'Signika';
+  border: 1px solid pink;
+  padding: 8px;
+  width: 500px;
+  height: 90px;
+  background-color: white;
+  margin-top: 8px;
+  margin-bottom: 5px;
+  border-radius: 2px;
+}
+
+.aboutTextConfirm {
+  padding: 10px 40px;
+  background-color: #ff3333;
+  color: white;
+  border-radius: 2px;
+  font-family: 'Signika';
+}
+
+.aboutTextCancel {
+  padding: 10px 39px;
+  margin-left: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 2px;
+  font-family: 'Signika';
+}
+
+.hidePls {
+  visibility: hidden;
+}
+
+/* right about */
+#lookingForDiv {
+  border-radius: 5px;
+  padding: 12px;
+  margin-top: 28px;
+}
+
+#lookingForDiv:hover {
+  background-color: white;
+}
+
+#lookingForHeader {
+  display: block;
+  font-size: 20px;
+  font-family: 'Signika';
+  font-weight: bold;
+  padding-bottom: 10px;
+  border-bottom: 1px solid lightgrey;
+}
+
+#LFSpan {
+  /*display: inline;*/
+  position: relative;
+  left: 6px;
+}
+
+#lookingForList {
+  margin: 15px;
+  margin-bottom: 0px;
+  font-family: 'Signika';
+}
+
+.lookingForTypes {
+  margin-left: 15px;
+}
+
+
 
 body {
   background-color: #ff8080;

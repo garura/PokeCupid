@@ -1,4 +1,5 @@
 var React = require('react');
+var ReactDOM = require('react-dom');
 var apiUtil = require('../util/apiUtil');
 var SessionStore = require('../stores/session');
 
@@ -18,11 +19,13 @@ var AboutDetail = React.createClass({
     event.preventDefault();
     var editting = !this.state.editting;
     this.setState({ editting: editting });
+    this.refs.editButton.className = 'hidePls';
   },
 
   clickCancel: function(event) {
     event.preventDefault();
     this.setState({ editting: false });
+    this.refs.editButton.className = 'aboutDetailToggle';
   },
 
   clickUpdate: function(event) {
@@ -32,6 +35,7 @@ var AboutDetail = React.createClass({
     var updatedInfo = { personality: { [param]: this.refs['textRef'].value }};
     apiUtil.updateUserPersonality(userInfo, updatedInfo);
     this.setState({ editting: false });
+    this.refs.editButton.className = 'aboutDetailToggle';
   },
 
   updateInfo: function(newText) {
@@ -45,21 +49,33 @@ var AboutDetail = React.createClass({
     if (this.state.editting) {
       var content = (
         <div className='aboutTextDiv'>
-          <textarea className='aboutTextArea'ref='textRef' placeholder={placeholderText} defaultValue={displayText}></textarea>
-          <button className='aboutTextConfirm' type='button' onClick={this.clickUpdate}>Update</button>
+          <textarea autoFocus className='aboutTextArea' ref='textRef' placeholder={placeholderText} defaultValue={displayText}></textarea>
+          <button className='aboutTextConfirm' type='button' onClick={this.clickUpdate}>Save</button>
           <button className='aboutTextCancel' type='button' onClick={this.clickCancel}>Cancel</button>
         </div>
       );
     }
+    else if (displayText){
+      var content = (
+        <div className='aboutTextDiv'>
+          <p className='displayText'>{displayText}</p>
+        </div>
+      );
+    }
     else {
-      displayText = displayText || this.state.defaultText; // show user info only if present
-      var content = <p>{displayText}</p>;
+      var content = (
+        <div className='aboutTextDiv'>
+          <p className='displayText placeholder'>{this.state.defaultText}</p>
+        </div>
+      );
     }
 
     return (
       <div className='aboutDetailDiv'>
         <p className='aboutDetailHeader'>{this.props.message}</p>
-        <button className='aboutDetailToggle' type='button' onClick={this.handleClicked}>change</button>
+        <button ref='editButton' className='aboutDetailToggle' type='button' onClick={this.handleClicked}>
+          <img className='pencil' src='./assets/pencil.png'></img>
+        </button>
         {content}
       </div>
     );
