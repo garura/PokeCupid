@@ -32,7 +32,14 @@ var AboutDetail = React.createClass({
     event.preventDefault();
     var userInfo = SessionStore.session();
     var param = this.props.updateParameter;
-    var updatedInfo = { personality: { [param]: this.refs['textRef'].value }};
+    if (this.refs['textRef'].value == false) {
+      var paramValue = null;
+    }
+    else {
+      var paramValue = this.refs['textRef'].value;
+    }
+    var updatedInfo = { personality: { [param]: paramValue }};
+    debugger;
     apiUtil.updateUserPersonality(userInfo, updatedInfo);
     this.setState({ editting: false });
     this.refs.editButton.className = 'aboutDetailToggle';
