@@ -63,6 +63,7 @@ var LookingFor = React.createClass({
     var types = this.generateTypeList();
     var seeking = this.generateSeeking();
 
+    // could return this in a click thing
     return (
       <div>
         <p>I'm looking for</p>

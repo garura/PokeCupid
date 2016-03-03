@@ -4,6 +4,7 @@ var SessionStore = require('../stores/session');
 var apiUtil = require('../util/apiUtil');
 var AboutDetail = require('./about_detail');
 var LookingFor = require('./looking_for');
+var MyDetails = require('./my_details');
 
 var About = React.createClass({
 
@@ -66,6 +67,7 @@ var About = React.createClass({
         </div>
         <div id='aboutRight'>
           <LookingFor />
+          <MyDetails />
         </div>
       </div>
     );

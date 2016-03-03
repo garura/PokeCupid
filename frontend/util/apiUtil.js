@@ -66,7 +66,6 @@ var apiUtil = {
         var mapped = preferences.map(function(index) {
            return index['poke_type'];
         });
-        debugger;
         SignInActions.sendPreferences(mapped);
       }
     });
