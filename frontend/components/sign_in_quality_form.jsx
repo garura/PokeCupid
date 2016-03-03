@@ -50,8 +50,8 @@ var SignInQuality = React.createClass({
 
   handleClicked: function(event) {
     event.preventDefault();
-    key = event.target.value;
-    value = !(this.state[key]);
+    var key = event.target.value;
+    var value = !(this.state[key]);
     this.setState({[key]: value});
   },
 
