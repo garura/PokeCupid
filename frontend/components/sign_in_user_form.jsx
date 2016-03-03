@@ -5,27 +5,6 @@ var ErrorActions = require('../actions/error_actions');
 var ErrorStore = require('../stores/errors');
 var PreferenceStore = require('../stores/preferences');
 
-// var pokeTypes = {
-//   "Normal": true,
-//   "Fighting": true,
-//   "Flying": true,
-//   "Poison": true,
-//   "Ground": true,
-//   "Rock": true,
-//   "Bug": true,
-//   "Ghost": true,
-//   "Steel": true,
-//   "Fire": true,
-//   "Water": true,
-//   "Grass": true,
-//   "Electric": true,
-//   "Psychic": true,
-//   "Ice": true,
-//   "Dragon": true,
-//   "Dark": true,
-//   "Fairy": true
-// };
-
 var pokeTypes = [
   "Normal",
   "Fighting",

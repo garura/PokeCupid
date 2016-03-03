@@ -1,6 +1,9 @@
 class Api::PokePreferencesController < ApplicationController
 
   def create
+
+    # allow creation from an array in the params?
+
     @poke_preferences = PokePreference.new(poke_params)
     if @poke_preferences.save
       render :show
@@ -8,10 +11,14 @@ class Api::PokePreferencesController < ApplicationController
   end
 
   def show
-    @poke_preferences = PokePreference.find(params[:id])
+    user = User.includes(:poke_preferences).find(params[:id])
+    @poke_preferences = user.poke_preferences
+    render :show
   end
 
   def destroy
+
+    # allow destruction from an array in the params?
 
   end
 

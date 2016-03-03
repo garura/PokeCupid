@@ -6,14 +6,18 @@ class Api::PokePersonalitiesController < ApplicationController
   end
 
   def update
-    @poke_personality = PokePersonality.find(params[:id])
-    @poke_personality.update
+    user = User.includes(:poke_personality).find(params[:id])
+    @poke_personality = user.poke_personality
+    @poke_personality.update!(personality_params)
     render :show
   end
 
   def show
-    @poke_personality = PokePersonality.find(params[:id])
-    render :show # jbuilder
+    user = User.includes(:poke_personality).find(params[:id])
+    @poke_personality = user.poke_personality
+    render :show
+    # @poke_personality = PokePersonality.find(params[:id])
+    # render :show # jbuilder
   end
 
 

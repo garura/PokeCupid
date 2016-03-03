@@ -9,6 +9,7 @@ var QualityStore = require('./stores/quality.js');
 var SessionStore = require('./stores/session');
 var ErrorStore = require('./stores/errors');
 var PreferenceStore = require("./stores/preferences");
+var PersonalityStore = require('./stores/poke_personality');
 var NavBar = require('./components/navbar');
 var SignInQualityForm = require('./components/sign_in_quality_form');
 var SignInUserForm = require('./components/sign_in_user_form');
@@ -37,17 +38,28 @@ var App = React.createClass({
 // valid_login
 // onEnter={valid_login}
 // edit profile / show profile routes
+
+
+function valid_login(nextState, replace) {
+  if (!SessionStore.session().id) {
+    replace({
+      pathname: '/signin',
+      state: { nextPathname: nextState.location.pathname }
+    })
+  }
+}
+
 var routes = (
   <Route path="/" component={App}>
     <IndexRoute component={SignInPreferencesForm}/>
     <Route path="user/new" component={SignInUserForm}/>
-    <Route path="home" component={Home}/>
     <Route path="signin" component={SignInAccountForm}/>
     <Route path="new" component={SignInPreferencesForm}/>
-    <Route path="profile" component={Profile}>
-      <Route path="about" component={About}/>
-      <Route path="photos" component={Photos}/>
-      <Route path="questions" component={Questions}/>
+    <Route path="home" component={Home} onEnter={valid_login}/>
+    <Route path="profile" component={Profile} onEnter={valid_login}>
+      <Route path="about" component={About} onEnter={valid_login}/>
+      <Route path="photos" component={Photos} onEnter={valid_login}/>
+      <Route path="questions" component={Questions} onEnter={valid_login}/>
     </Route>
   </Route>
 );

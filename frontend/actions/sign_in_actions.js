@@ -13,6 +13,11 @@ module.exports = {
       preferences: preferences
     });
   },
+  clearPreferences: function() {
+    AppDispatcher.dispatch({
+      actionType: "CLEAR_PREFERENCES"
+    });
+  },
   sendSession: function(session) {
     AppDispatcher.dispatch({
       actionType: "GIVE_SESSION",

@@ -1,5 +1,6 @@
 var SignInActions = require('../actions/sign_in_actions');
 var ErrorActions = require('../actions/error_actions');
+var PersonalityActions = require('../actions/personality_actions');
 
 var apiUtil = {
   verifyUser: function(userInfo, callback) {
@@ -25,6 +26,7 @@ var apiUtil = {
       data: userInfo,
       success: function(session) {
         ErrorActions.clearErrors();
+        SignInActions.clearPreferences();
         SignInActions.sendSession(session);
         callback();
       },
@@ -33,7 +35,43 @@ var apiUtil = {
         ErrorActions.sendErrors(errors);
       }
     });
+  },
+  getUserPersonality: function(userInfo) {
+    var id = userInfo.id;
+    $.ajax({
+      url: "api/poke_personalities/" + id,
+      method: "GET",
+      success: function(personality) {
+        PersonalityActions.sendPersonality(personality);
+      }
+    });
+  },
+  updateUserPersonality: function(userInfo, updatedInfo) {
+    var id = userInfo.id;
+    $.ajax({
+      url: 'api/poke_personalities/' + id,
+      method: 'PATCH',
+      data: updatedInfo,
+      success: function(personality) {
+        PersonalityActions.sendPersonality(personality);
+      }
+    });
+  },
+  getUserPreferences: function(userInfo) {
+    var id = userInfo.id;
+    $.ajax({
+      url: 'api/poke_preferences/' + id,
+      method: 'GET',
+      success: function(preferences) {
+        var mapped = preferences.map(function(index) {
+           return index['poke_type'];
+        });
+        debugger;
+        SignInActions.sendPreferences(mapped);
+      }
+    });
   }
 };
 
+window.apiUtil = apiUtil;
 module.exports = apiUtil;

@@ -1,1 +1,1 @@
-json.extract! @poke_preferences, :id, :user_id, :poke_type
+json.array! @poke_preferences, :poke_type

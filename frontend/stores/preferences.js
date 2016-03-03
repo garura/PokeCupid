@@ -19,7 +19,12 @@ PreferenceStore.__onDispatch = function(payload) {
       resetPreferences(payload.preferences);
       PreferenceStore.__emitChange();
       break;
+    case "CLEAR_PREFERENCES":
+      resetPreferences([]);
+      PreferenceStore.__emitChange();
+      break;
   }
 };
 
+window.PreferenceStore = PreferenceStore;
 module.exports = PreferenceStore;

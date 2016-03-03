@@ -1,10 +1,13 @@
 var React = require('react');
-var ErrorActions = require('../actions/error_actions');
+var apiUtil = require('../util/apiUtil');
+var SessionStore = require('../stores/session');
 
 var AboutDetail = React.createClass({
 
   getInitialState: function() {
-    return ({ editting: false, subtext: this.props.subtext });
+    return ({ editting: false,
+              subtext: this.props.subtext,
+              defaultText: this.props.defaultText });
   },
 
   componentWillReceiveProps: function(newProps) {
@@ -24,8 +27,10 @@ var AboutDetail = React.createClass({
 
   clickUpdate: function(event) {
     event.preventDefault();
-    ErrorActions.sendErrors(this.refs['textRef'].value);
-    // TODO: poke_personality store, not error store. need to get api from
+    var userInfo = SessionStore.session();
+    var param = this.props.updateParameter;
+    var updatedInfo = { personality: { [param]: this.refs['textRef'].value }};
+    apiUtil.updateUserPersonality(userInfo, updatedInfo);
     this.setState({ editting: false });
   },
 
@@ -35,23 +40,26 @@ var AboutDetail = React.createClass({
   },
 
   render: function() {
+    var displayText = this.state.subtext;
+    var placeholderText = this.state.defaultText;
     if (this.state.editting) {
       var content = (
-        <div>
-          <textarea ref='textRef' defaultValue={this.props.subtext}></textarea>
-          <button type='button' onClick={this.clickUpdate}>Update</button>
-          <button type='button' onClick={this.clickCancel}>Cancel</button>
+        <div className='aboutTextDiv'>
+          <textarea className='aboutTextArea'ref='textRef' placeholder={placeholderText} defaultValue={displayText}></textarea>
+          <button className='aboutTextConfirm' type='button' onClick={this.clickUpdate}>Update</button>
+          <button className='aboutTextCancel' type='button' onClick={this.clickCancel}>Cancel</button>
         </div>
       );
     }
     else {
-      var content = <p>{this.props.subtext}</p>;
+      displayText = displayText || this.state.defaultText; // show user info only if present
+      var content = <p>{displayText}</p>;
     }
 
     return (
-      <div>
-        <p className='aboutHeader'>{this.props.message}</p>
-        <button type='button' onClick={this.handleClicked}>change</button>
+      <div className='aboutDetailDiv'>
+        <p className='aboutDetailHeader'>{this.props.message}</p>
+        <button className='aboutDetailToggle' type='button' onClick={this.handleClicked}>change</button>
         {content}
       </div>
     );
