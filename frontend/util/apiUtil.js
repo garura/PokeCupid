@@ -20,7 +20,6 @@ var apiUtil = {
     });
   },
   createUser: function(userInfo, callback) {
-    debugger;
     $.ajax({
       url: "api/users",
       method: "POST",
