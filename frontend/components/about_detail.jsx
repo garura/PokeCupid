@@ -32,7 +32,8 @@ var AboutDetail = React.createClass({
     event.preventDefault();
     var userInfo = SessionStore.session();
     var param = this.props.updateParameter;
-    if (this.refs['textRef'].value == false) {
+    var value = this.refs['textRef'].value;
+    if (value == false && value.indexOf("0") < 0) {
       var paramValue = null;
     }
     else {

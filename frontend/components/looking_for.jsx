@@ -7,7 +7,7 @@ var apiUtil = require('../util/apiUtil');
 
 const customStyles = {
   content : {
-    top                   : '60%',
+    top                   : '55%',
     left                  : '50%',
     right                 : 'auto',
     bottom                : 'auto',
@@ -81,7 +81,6 @@ var LookingFor = React.createClass({
   },
 
   closeModal: function() {
-    console.log("closed");
     this.setState({ modalIsOpen: false });
   },
 
@@ -127,9 +126,9 @@ var LookingFor = React.createClass({
     preferences.forEach(function(type) {
       seekingTypes[type] = true;
     });
-
     this.setState({preferences: preferences,
                    seekingTypes: seekingTypes});
+
   },
 
   battling: function(event) {
@@ -163,7 +162,7 @@ var LookingFor = React.createClass({
         friendship: this.state.friendship,
         breeding: this.state.breeding,
     }};
-    // apiUtil.updateUserPersonality(userInfo, updateInfo);
+    apiUtil.updateUserPersonality(userInfo, updateInfo);
 
     var preferences = [];
     Object.keys(this.state.seekingTypes).map(function(type) {
@@ -171,7 +170,8 @@ var LookingFor = React.createClass({
         preferences.push(type);
       }
     });
-    // apiUtil.updateUserPreferences(userInfo, preferences);
+    preferences = {preferences: preferences};
+    apiUtil.updateUserPreferences(userInfo, preferences);
     this.closeModal();
   },
 
@@ -205,7 +205,6 @@ var LookingFor = React.createClass({
       return (<li key={index} className='lookingForTypes'>{poke_type}</li>);
     });
     types = (<ul >Types:{types}</ul>);
-
     return types;
   },
 
@@ -220,12 +219,11 @@ var LookingFor = React.createClass({
     if (this.state.personality.breeding) {
       seeking.push("breeding");
     }
-    seeking.join(", ");
+    seeking = seeking.join(", ");
     if (seeking) {
-      seeking = <p id='lookingForSeeking'>For {seeking}</p>;
+      seeking = <li><p id='lookingForSeeking'>For {seeking}</p></li>;
+      return seeking;
     }
-
-    return seeking;
   },
 
   setLevels: function(event) {
@@ -258,15 +256,15 @@ var LookingFor = React.createClass({
 
     var buttons = this.generateButtons();
 
-
     // could return this in a click thing
+
     return (
       <div id='lookingForDiv' onClick={this.openModal}>
         <p id='lookingForHeader'>I'm looking for <span id='LFSpan'><img className='pencil' src='./assets/pencil.png'></img></span></p>
         <ul id='lookingForList'>
           <li>{types}</li>
           <li><p id='lookingForLevels'>Levels {this.state.personality.min_level}-{this.state.personality.max_level}</p></li>
-          <li>{seeking}</li>
+          {seeking}
         </ul>
         <Modal
           isOpen={this.state.modalIsOpen}
@@ -278,13 +276,13 @@ var LookingFor = React.createClass({
             <button id='modalClose' onClick={this.closeModal}>x</button>
           </div>
           <div id='myDetailInnerModalDiv'>
-            <p className='modalQuestion'>Which types are you interested in?</p>
-            <div id='type_buttons'>{buttons}</div>
+            <p className='typeQuestion'>Which types are you interested in?</p>
+            <div id='modalType_buttons'>{buttons}</div>
             <br></br>
             <p className='modalQuestion'>Levels</p>
-            <input type='text' ref='min' defaultValue={this.state.min_level} onBlur={this.setLevels}></input>
-            <p>-</p>
-            <input type='text' ref='max' defaultValue={this.state.max_level} onBlur={this.setLevels}></input>
+            <input className='levelInput' maxLength={3} type='text' ref='min' defaultValue={this.state.min_level} onBlur={this.setLevels}></input>
+            <p id='levelDash'>to</p>
+            <input className='levelInput' maxLength={3} type='text' ref='max' defaultValue={this.state.max_level} onBlur={this.setLevels}></input>
             <br></br>
             <p className='modalQuestion'>For</p>
             <button className={'modalButton' + battling} onClick={this.battling}>Battling</button>

@@ -57,8 +57,8 @@ var routes = (
     <Route path="signin" component={SignInAccountForm}/>
     <Route path="new" component={SignInPreferencesForm}/>
     <Route path="home" component={Home} onEnter={valid_login}/>
-    <Route path="profile" component={Profile} >
-      <Route path="about" component={About} />
+    <Route path="profile" component={Profile} onEnter={valid_login}>
+      <Route path="about" component={About} onEnter={valid_login}/>
       <Route path="photos" component={Photos} onEnter={valid_login}/>
       <Route path="questions" component={Questions} onEnter={valid_login}/>
     </Route>

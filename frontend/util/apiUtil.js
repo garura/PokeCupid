@@ -57,6 +57,21 @@ var apiUtil = {
       }
     });
   },
+  updateUserPreferences: function(userInfo, newPreferences) {
+    var id = userInfo.id;
+    $.ajax({
+      url: 'api/poke_preferences/' + id,
+      method: 'PATCH',
+      data: newPreferences,
+      success: function(preferences) {
+        var mapped = preferences.map(function(index) {
+           return index['poke_type'];
+        });
+        debugger;
+        SignInActions.sendPreferences(mapped);
+      }
+    });
+  },
   getUserPreferences: function(userInfo) {
     var id = userInfo.id;
     $.ajax({

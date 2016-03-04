@@ -117,7 +117,7 @@ var NavBar = React.createClass({
         <div id='navBarDiv'>
           {navMessage}
           {sessionButton}
-          <header ><h1 id='pokeCupidHeader'>PokéCupid !</h1></header>
+          <h1 id='pokeCupidHeader'>PokéCupid !</h1>
         </div>
       </div>
 
