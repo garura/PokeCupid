@@ -2,6 +2,9 @@ require_relative '../../models/poke_personality.rb'
 
 class Api::UsersController < ApplicationController
 
+
+# User.where("type_one IN (?) OR type_two IN (?)", ["Dark", "Fighting"], ["Dark", "Fighting"])
+
   def create
     @user = User.new(user_params)
 
@@ -13,7 +16,6 @@ class Api::UsersController < ApplicationController
     end
 
     @user.birthday = Time.new(params[:year], params[:month], params[:day])
-
     if @user.save
       PokePersonality.create!(user_id: @user.id)
       preferences = params[:preferences]
@@ -38,7 +40,7 @@ class Api::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :email, :password, :type_one, :type_two)
+    params.require(:user).permit(:username, :email, :password, :type_one, :type_two, :response)
   end
 
 end

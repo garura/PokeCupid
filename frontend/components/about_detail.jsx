@@ -40,7 +40,6 @@ var AboutDetail = React.createClass({
       var paramValue = this.refs['textRef'].value;
     }
     var updatedInfo = { personality: { [param]: paramValue }};
-    debugger;
     apiUtil.updateUserPersonality(userInfo, updatedInfo);
     this.setState({ editting: false });
     this.refs.editButton.className = 'aboutDetailToggle';

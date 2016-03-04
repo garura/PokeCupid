@@ -133,7 +133,8 @@ var SignInUser = React.createClass({
           password: this.state.password,
           email: this.state.email,
           type_one: this.state.type_one,
-          type_two: this.state.type_two
+          type_two: this.state.type_two,
+          response: "      "
         },
         day: this.state.day,
         month: this.state.month,

@@ -151,6 +151,9 @@ var LookingFor = React.createClass({
 
   saveDetails:function(event) {
     event.preventDefault();
+
+    // TODO: confirm one type selected
+
     var that = this;
     var userInfo = SessionStore.session();
 

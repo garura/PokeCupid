@@ -1,11 +1,17 @@
 var React = require('react');
+var QuestionDetail = require('./question_detail');
 
 var Questions = React.createClass({
 
   render: function() {
     return (
       <div>
-        Questions!
+        <QuestionDetail />
+        <QuestionDetail />
+        <QuestionDetail />
+        <QuestionDetail />
+        <QuestionDetail />
+        <QuestionDetail />
       </div>
     );
   }

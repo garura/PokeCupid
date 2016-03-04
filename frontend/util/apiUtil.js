@@ -20,6 +20,7 @@ var apiUtil = {
     });
   },
   createUser: function(userInfo, callback) {
+    debugger;
     $.ajax({
       url: "api/users",
       method: "POST",
@@ -67,7 +68,6 @@ var apiUtil = {
         var mapped = preferences.map(function(index) {
            return index['poke_type'];
         });
-        debugger;
         SignInActions.sendPreferences(mapped);
       }
     });
