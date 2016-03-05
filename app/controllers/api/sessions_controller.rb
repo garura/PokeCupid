@@ -14,7 +14,7 @@ class Api::SessionsController < ApplicationController
 
   def destroy
     log_out!
-    redirect_to root_url
+    render json: {logged_out: true}
   end
 
 

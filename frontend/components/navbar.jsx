@@ -3,6 +3,7 @@ var PropTypes = React.PropTypes;
 var SessionStore = require('../stores/session');
 var SignInActions = require('../actions/sign_in_actions');
 var ErrorActions = require('../actions/error_actions');
+var apiUtil = require('../util/apiUtil');
 
 var NavBar = React.createClass({
 
@@ -42,6 +43,8 @@ var NavBar = React.createClass({
     ErrorActions.clearErrors();
     SignInActions.sendPreferences([]);
     // go to sign up
+    // ajax request to destroy session, reset localStorage
+    apiUtil.logOutUser();
     this.goToSignUpPage();
   },
 

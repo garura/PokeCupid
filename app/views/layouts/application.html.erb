@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Capstone</title>
+  <title>PokéCupid</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <link href='https://fonts.googleapis.com/css?family=Fredoka+One' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Signika' rel='stylesheet' type='text/css'>
@@ -9,7 +9,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+  <% if current_user %>
+    <script type="text/javascript">
+      window.localStorage.setItem('user_id', <%= current_user.id %>)
+    </script>
+  <% end %>
   <%= yield %>
 
 

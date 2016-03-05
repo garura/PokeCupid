@@ -33,7 +33,26 @@ class Api::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @age = {age: (Time.now - @user.birthday.to_time) / 60 / 60 / 24 / 365 }
+    fail
     render :show
+  end
+
+  def session_info
+    @user = User.find(params[:id])
+    @age = {age: (Time.now - @user.birthday.to_time) / 60 / 60 / 24 / 365 }
+    render :new
+  end
+
+  def response_text
+    user = User.find(params[:user_id])
+    user_response = user.response
+    @response = []
+
+    6.times do |index|
+      @response << user_response[index]
+    end
+    render json: {response: user_response}
   end
 
 

@@ -1,6 +1,7 @@
 var SignInActions = require('../actions/sign_in_actions');
 var ErrorActions = require('../actions/error_actions');
 var PersonalityActions = require('../actions/personality_actions');
+var ResponseActions = require('../actions/response_actions');
 
 var apiUtil = {
   verifyUser: function(userInfo, callback) {
@@ -83,8 +84,38 @@ var apiUtil = {
         SignInActions.sendPreferences(mapped);
       }
     });
+  },
+  getUserResponse: function(userInfo) {
+    var id = userInfo.id;
+    $.ajax({
+      url: 'api/response/' + id,
+      method: 'GET',
+      success: function(response) {
+        var storeResponse = response.response.split("");
+        debugger;
+        ResponseActions.sendResponse(storeResponse);
+      }
+    });
+  },
+  logOutUser: function() {
+    $.ajax({
+      url: 'api/session',
+      method: 'DELETE',
+      success: function(loggedOut) {
+        SignInActions.clearSession();
+        window.localStorage.clear();
+      }
+    });
+  },
+  getSessionInfo: function(id) {
+    $.ajax({
+      url: 'api/user/session/' + id,
+      method: 'GET',
+      success: function(session) {
+        SignInActions.sendSession(session);
+      }
+    });
   }
 };
 
-window.apiUtil = apiUtil;
 module.exports = apiUtil;

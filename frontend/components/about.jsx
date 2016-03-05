@@ -9,17 +9,27 @@ var MyDetails = require('./my_details');
 var About = React.createClass({
 
   getInitialState: function() {
-    return ({ personality: PersonalityStore.personality()});
+    return ({ personality: PersonalityStore.personality(),
+              userInfo: SessionStore.session()});
   },
 
   componentDidMount: function() {
-    this.pokePeronalityToken = PersonalityStore.addListener(this.updateInfo);
-    var userInfo = SessionStore.session();
-    apiUtil.getUserPersonality(userInfo);
+    this.pokePersonalityToken = PersonalityStore.addListener(this.updateInfo);
+    this.sessionToken = SessionStore.addListener(this.updateUserInfo);
+    var id = SessionStore.session().id || window.localStorage.getItem('user_id');
+    // update session (updates props for AboutDetail) -> update personality (updates store for LookingFor)
+    apiUtil.getSessionInfo(id);
   },
 
   componentWillUnmount: function() {
-    this.pokePeronalityToken.remove();
+    this.pokePersonalityToken.remove();
+    this.sessionToken.remove();
+  },
+
+  updateUserInfo: function() {
+    var userInfo = SessionStore.session();
+    this.setState({userInfo: userInfo})
+    apiUtil.getUserPersonality(userInfo);
   },
 
   updateInfo: function() {

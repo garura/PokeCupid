@@ -1,5 +1,6 @@
 var React = require('react');
 var SessionStore = require('../stores/session');
+var apiUtil = require('../util/apiUtil');
 
 
 var selected_values = {
@@ -20,9 +21,22 @@ var Profile = React.createClass({
     return ({ current_user: user_info, selected: 0 });
   },
 
+  componentDidMount: function() {
+    this.sessionToken = SessionStore.addListener(this.updateInfo);
+    var id = SessionStore.session().id || window.localStorage.getItem('user_id');
+    apiUtil.getSessionInfo(id);
+  },
+
+  componentWillUnmount: function() {
+    this.sessionToken.remove();
+  },
+
+  updateInfo: function() {
+    this.setState({current_user: SessionStore.session()});
+  },
+
   profileSubmit: function(event) {
     event.preventDefault();
-    console.log("hi u clicked submit :)");
   },
 
   generateLabel: function() {

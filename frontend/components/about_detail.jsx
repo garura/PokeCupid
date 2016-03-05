@@ -6,9 +6,15 @@ var SessionStore = require('../stores/session');
 var AboutDetail = React.createClass({
 
   getInitialState: function() {
+    var userInfo = SessionStore.session() || {};
     return ({ editting: false,
               subtext: this.props.subtext,
-              defaultText: this.props.defaultText });
+              defaultText: this.props.defaultText,
+              userInfo: userInfo});
+  },
+
+  updateUserInfo: function() {
+    this.setState({userInfo: SessionStore.session()});
   },
 
   componentWillReceiveProps: function(newProps) {
@@ -30,7 +36,7 @@ var AboutDetail = React.createClass({
 
   clickUpdate: function(event) {
     event.preventDefault();
-    var userInfo = SessionStore.session();
+    var userInfo = this.state.userInfo;
     var param = this.props.updateParameter;
     var value = this.refs['textRef'].value;
     if (value == false && value.indexOf("0") < 0) {

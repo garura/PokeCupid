@@ -42,7 +42,7 @@ var App = React.createClass({
 
 
 function valid_login(nextState, replace) {
-  if (!SessionStore.session().id) {
+  if (!SessionStore.session().id && !window.localStorage.getItem('user_id')) {
     replace({
       pathname: '/signin',
       state: { nextPathname: nextState.location.pathname }
