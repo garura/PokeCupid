@@ -92,7 +92,6 @@ var apiUtil = {
       method: 'GET',
       success: function(response) {
         var storeResponse = response.response.split("");
-        debugger;
         ResponseActions.sendResponse(storeResponse);
       }
     });

@@ -68,7 +68,10 @@ var LookingFor = React.createClass({
   componentDidMount: function() {
     this.personalityToken = PersonalityStore.addListener(this.updatePersonality);
     this.preferencesToken = PreferenceStore.addListener(this.updatePreferences);
-    apiUtil.getUserPreferences(SessionStore.session());
+    if (SessionStore.session().id) {
+      debugger;
+      apiUtil.getUserPreferences(SessionStore.session());
+    }
   },
 
   componentWillUnmount: function() {

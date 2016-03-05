@@ -59,13 +59,13 @@
   color: white;
   z-index: 102;
   font-family: "Fredoka One";
-  transition: background-color .7s;
+  transition: .7s;
   text-shadow: -.8px 0 black, 0 .8px black, .8px 0 black, 0 -.8px black;
 }
 
 #navBarButton:hover {
   background-color: lightblue;
-  transition: 0.15s;
+  transition: .15s;
   cursor: pointer;
   z-index: 102;
 }
