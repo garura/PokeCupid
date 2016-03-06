@@ -2,7 +2,7 @@ var Store = require('flux/utils').Store;
 var AppDispatcher = require('../dispatcher/dispatcher');
 
 
-var _response = [];
+var _response = "";
 var ResponseStore = new Store(AppDispatcher);
 
 ResponseStore.response = function() {

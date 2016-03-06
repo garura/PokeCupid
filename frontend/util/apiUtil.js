@@ -91,8 +91,19 @@ var apiUtil = {
       url: 'api/response/' + id,
       method: 'GET',
       success: function(response) {
-        var storeResponse = response.response.split("");
-        ResponseActions.sendResponse(storeResponse);
+        ResponseActions.sendResponse(response.response);
+      }
+    });
+  },
+  updateUserResponse: function(userId, responseInfo) {
+    $.ajax({
+      url: 'api/response/' + userId,
+      method: 'POST',
+      data: {user: {
+        response: responseInfo
+      }},
+      success: function(response) {
+        ResponseActions.sendResponse(response.response);
       }
     });
   },

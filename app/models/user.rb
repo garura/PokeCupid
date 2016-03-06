@@ -55,6 +55,16 @@ class User < ActiveRecord::Base
     points
   end
 
+  def matches
+    preferences = self.poke_preferences.map { |pref| pref.poke_type }
+    match_type_users = User.where("type_one IN (?) OR type_two IN (?)", preferences, preferences)
+    good_matches = []
+    match_type_users.each do |user|
+      good_matches << user if User.match_points(self, user) > 0
+    end
+    good_matches
+  end
+
 
   def password=(password)
     @password = password

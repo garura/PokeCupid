@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :users, only: [:create, :show]
     resources :poke_preferences, only: [:create, :show, :update, :destroy]
     get '/response/:user_id', to: 'users#response_text'
+    post '/response/:id', to: 'users#update_response'
     get '/user/session/:id', to: 'users#session_info'
   end
 end

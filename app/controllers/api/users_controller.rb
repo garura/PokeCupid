@@ -47,11 +47,13 @@ class Api::UsersController < ApplicationController
   def response_text
     user = User.find(params[:user_id])
     user_response = user.response
-    @response = []
+    render json: {response: user_response}
+  end
 
-    6.times do |index|
-      @response << user_response[index]
-    end
+  def update_response
+    user = User.find(params[:id])
+    user.update!(user_params)
+    user_response = user.response
     render json: {response: user_response}
   end
 
