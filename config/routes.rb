@@ -8,5 +8,6 @@ Rails.application.routes.draw do
     get '/response/:user_id', to: 'users#response_text'
     post '/response/:id', to: 'users#update_response'
     get '/user/session/:id', to: 'users#session_info'
+    get '/user/matches/:id', to: 'users#matches'
   end
 end

@@ -57,6 +57,12 @@ class Api::UsersController < ApplicationController
     render json: {response: user_response}
   end
 
+  def matches
+    user = User.includes(:poke_personality).find(params[:id])
+    @matches = user.matches
+    render :matches
+  end
+
 
   private
 

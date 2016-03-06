@@ -60,9 +60,9 @@ class User < ActiveRecord::Base
     match_type_users = User.where("type_one IN (?) OR type_two IN (?)", preferences, preferences)
     good_matches = []
     match_type_users.each do |user|
-      good_matches << user if User.match_points(self, user) > 0
+      good_matches << user if User.match_points(self, user) >= 1
     end
-    good_matches
+    good_matches - [self]
   end
 
 

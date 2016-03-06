@@ -21,6 +21,8 @@ var Profile = require('./components/profile');
 var About = require('./components/about');
 var Photos = require('./components/photos');
 var Questions = require('./components/questions');
+var MatchIndex = require('./components/match_index');
+var MatchInfo = require('./components/match_info');
 
 var App = React.createClass({
   render: function () {
@@ -57,6 +59,7 @@ var routes = (
     <Route path="signin" component={SignInAccountForm}/>
     <Route path="new" component={SignInPreferencesForm}/>
     <Route path="home" component={Home} onEnter={valid_login}/>
+    <Route path="matches" component={MatchIndex} onEnter={valid_login}/>
     <Route path="profile" component={Profile} onEnter={valid_login}>
       <Route path="about" component={About} onEnter={valid_login}/>
       <Route path="photos" component={Photos} onEnter={valid_login}/>

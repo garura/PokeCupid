@@ -2,6 +2,7 @@ var SignInActions = require('../actions/sign_in_actions');
 var ErrorActions = require('../actions/error_actions');
 var PersonalityActions = require('../actions/personality_actions');
 var ResponseActions = require('../actions/response_actions');
+var MatchActions = require('../actions/match_actions');
 
 var apiUtil = {
   verifyUser: function(userInfo, callback) {
@@ -123,6 +124,15 @@ var apiUtil = {
       method: 'GET',
       success: function(session) {
         SignInActions.sendSession(session);
+      }
+    });
+  },
+  getUserMatches: function(id) {
+    $.ajax({
+      url: 'api/user/matches/' + id,
+      method: 'GET',
+      success: function(matches) {
+        MatchActions.sendMatches(matches);
       }
     });
   }
