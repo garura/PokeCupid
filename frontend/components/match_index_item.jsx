@@ -66,7 +66,7 @@ var MatchIndexItem = React.createClass({
         </div>
         <div className='matchIndexItemNav'>
           <p className='matchIndexItemPercent'>Percent Match: {this.state.points}%</p>
-          <button className='matchIndexItemButton' onClick={this.goToProfile}>Go to profile!</button>
+          <button className='matchIndexItemButton' onClick={this.goToProfile}>See their profile!</button>
         </div>
 
       </div>
