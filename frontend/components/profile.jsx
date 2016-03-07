@@ -9,6 +9,16 @@ var selected_values = {
   2: "profile/questions"
 };
 
+// used to keep contentNav displayed correctly on refresh and re-entry
+var routeParam = {
+  "/profile/about": 0,
+  "/profile/photos": 1,
+  "/profile/questions": 2,
+  "profile/about": 0,
+  "profile/photos": 1,
+  "profile/questions": 2
+};
+
 
 var Profile = React.createClass({
 
@@ -18,7 +28,9 @@ var Profile = React.createClass({
 
   getInitialState: function() {
     var user_info = SessionStore.session() || {};
-    return ({ current_user: user_info, selected: 0 });
+    var selected = routeParam[this.props.location.pathname];
+    debugger;
+    return ({ current_user: user_info, selected: selected });
   },
 
   componentDidMount: function() {
@@ -29,6 +41,12 @@ var Profile = React.createClass({
 
   componentWillUnmount: function() {
     this.sessionToken.remove();
+  },
+
+  componentWillReceiveProps: function(newProps) {
+    var selected = routeParam[newProps.location.pathname];
+    debugger;
+    this.setState({ selected: selected });
   },
 
   updateInfo: function() {
@@ -66,7 +84,6 @@ var Profile = React.createClass({
 
   generateContentNav: function() {
     var selected = this.state.selected;
-
     return (
       <ul id='profileNav'>
         <li value="0" className={ selected === 0 ? "listy selected" : "listy" } id='about' onClick={this.handleClick}>About</li>
@@ -79,7 +96,7 @@ var Profile = React.createClass({
   render: function() {
     var user_label = this.generateLabel() || "";
     var contentNav = this.generateContentNav();
-
+    debugger;
     return (
       <div id='profileDiv'>
         <img id='profilePic'
