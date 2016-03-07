@@ -58,6 +58,14 @@ var MatchIndex = React.createClass({
 
     var matches = this.generateMatchList();
 
+    if (matches.length === 0) {
+      matches =
+        <p id='noMatches'>
+          No matches found. Have you answered any questions on your profile yet?
+          <img id='cubone' src='https://pbs.twimg.com/media/CcMucU4W8AAKgb6.png'></img>
+        </p>;
+    }
+
     return (
       <div id='matchIndexDiv'>
         <p id='matchIndexHeader'>Your Matches:</p>
