@@ -28,5 +28,4 @@ ResponseStore.__onDispatch = function(payload) {
   }
 };
 
-window.ResponseStore = ResponseStore;
 module.exports = ResponseStore;

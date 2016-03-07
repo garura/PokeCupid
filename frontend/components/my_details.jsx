@@ -112,7 +112,6 @@ var MyDetails = React.createClass({
                     pokerus: pokerus });
   },
 
-
   render: function() {
     if (this.state.personality.caught) {
       var caught = "Yes";
@@ -172,7 +171,6 @@ var MyDetails = React.createClass({
       </div>
     );
   }
-
 });
 
 module.exports = MyDetails;

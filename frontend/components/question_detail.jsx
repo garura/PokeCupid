@@ -63,7 +63,6 @@ var QuestionDetail = React.createClass({
     var falseClass = this.state.userIndexResponse === "F" ? " isValue": "";
     var noClass = this.state.userIndexResponse === " " ? " isValue": "";
 
-
     return (
       <div className='questionDetailDiv'>
         <p className='questionDetailText'>{this.props.questionText}</p>

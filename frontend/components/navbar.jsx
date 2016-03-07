@@ -106,8 +106,25 @@ var NavBar = React.createClass({
       return (<p id='navBarMessage' onClick={this.goToProfile}>{username}</p>);
     }
     else {
-      
+      return (<button id='navBarMessage' type='button' onClick={this.demoUser}>Demo Account</button>);
     }
+  },
+
+  goToProfile: function() {
+    this.context.router.push("profile/about");
+  },
+
+  demoUser: function(event) {
+    // debugger;
+    // event.preventDefault();
+    var demo = {
+      user: {
+        username: "Pikachu",
+        password: "123123"
+      }
+    };
+
+    apiUtil.verifyUser(demo, this.goToProfile);
   },
 
   createMatchButton: function() {
@@ -122,7 +139,7 @@ var NavBar = React.createClass({
   },
 
   goToProfile: function(event) {
-    event.preventDefault();
+    // event.preventDefault();
     this.context.router.push("profile/about");
   },
 

@@ -34,8 +34,4 @@ MatchStore.__onDispatch = function(payload) {
   }
 };
 
-
-
-
-
 module.exports = MatchStore;

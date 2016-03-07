@@ -16,7 +16,6 @@ var MatchInfo = React.createClass({
     return ({ matchInfo: matchInfo,
               userInfo: userInfo });
   },
-  // update match store on mount
 
   componentDidMount: function() {
     this.sessionToken = SessionStore.addListener(this.updateUserInfo);
@@ -82,13 +81,10 @@ var MatchInfo = React.createClass({
         seeking = "";
       }
 
-
       var rarecandy = info.personality.rarecandy;
       var pokerus = info.personality.pokerus ? "Yes" : "No";
       var caught = info.personality.caught ? "Yes" : "No";
     }
-
-
 
     return (
       <div id='userInfoPage'>

@@ -72,7 +72,6 @@ var MatchIndexItem = React.createClass({
       </div>
     );
   }
-
 });
 
 module.exports = MatchIndexItem;
