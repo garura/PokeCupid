@@ -58,8 +58,8 @@ class Api::UsersController < ApplicationController
   end
 
   def matches
-    user = User.includes(:poke_personality).find(params[:id])
-    @matches = user.matches
+    @user = User.includes(:poke_personality).find(params[:id])
+    @matches = @user.matches
     render :matches
   end
 

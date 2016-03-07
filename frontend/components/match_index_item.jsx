@@ -1,0 +1,78 @@
+var React = require('react');
+
+var MatchIndexItem = React.createClass({
+
+  contextTypes: {
+    router: React.PropTypes.object.isRequired
+  },
+
+  getInitialState: function() {
+    var username = this.props.username;
+    var age = this.props.age;
+    var typeOne = this.props.typeOne;
+    var typeTwo = this.props.typeTwo;
+    var matchId = this.props.matchId;
+    var points = this.props.points;
+    return ({
+      matchId: matchId,
+      username: username,
+      age: age,
+      typeOne: typeOne,
+      typeTwo: typeTwo,
+      points: points
+    });
+  },
+
+  componentWillReceiveProps: function(newProps) {
+    var username = newProps.username;
+    var age = newProps.age;
+    var typeOne = newProps.typeOne;
+    var typeTwo = newProps.typeTwo;
+    var matchId = this.props.matchId;
+    var points = this.props.points;
+    this.setState({
+      matchId: matchId,
+      username: username,
+      age: age,
+      typeOne: typeOne,
+      typeTwo: typeTwo,
+      points: points
+    });
+  },
+
+  goToProfile: function(event) {
+    event.preventDefault();
+    var path = 'user/' + this.state.matchId;
+    this.context.router.push(path);
+  },
+
+  render: function() {
+
+    var types = this.state.typeOne;
+    if (this.state.typeTwo) {
+      types += ("-" + this.state.typeTwo);
+    }
+
+    return (
+      <div className='matchIndexItemDiv'>
+        <img className='matchIndexPic'
+             src='http://k3.okccdn.com/media/img/user/placeholder_2013/pq_225.png'
+             alt='Profile Picture'>
+        </img>
+        <div className='matchIndexItemUser'>
+          <p className='matchIndexItemName'>{this.state.username}</p>
+          <br></br>
+          <p className='matchIndexItemInfo'>Level {this.state.age}, {types} Type</p>
+        </div>
+        <div className='matchIndexItemNav'>
+          <p className='matchIndexItemPercent'>Percent Match: {this.state.points}%</p>
+          <button className='matchIndexItemButton' onClick={this.goToProfile}>Go to profile!</button>
+        </div>
+
+      </div>
+    );
+  }
+
+});
+
+module.exports = MatchIndexItem;

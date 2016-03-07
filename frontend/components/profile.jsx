@@ -51,7 +51,7 @@ var Profile = React.createClass({
       <label href="#" id='current_user_info'>
         <p id='profileName'>{this.state.current_user.username}</p>
         <p>Level {Math.floor(this.state.current_user.age)}, {label}</p>
-        <p>Change your picture!</p>
+
       </label>
     );
   },

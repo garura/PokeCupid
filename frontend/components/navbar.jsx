@@ -103,24 +103,54 @@ var NavBar = React.createClass({
       text = "Have an account?";
     }
     if (username) {
-      return (<p id='navBarMessage'>{username}</p>);
+      return (<p id='navBarMessage' onClick={this.goToProfile}>{username}</p>);
     }
     else {
-      return (<p id='navBarMessage'>{text}</p>)
+      
     }
+  },
+
+  createMatchButton: function() {
+    if (this.state.current_user.username) {
+      return (<button type='button' id='matchButton' onClick={this.goToMatch}>My Matches</button>);
+    }
+  },
+
+  goToMatch: function(event) {
+    event.preventDefault();
+    this.context.router.push("matches");
+  },
+
+  goToProfile: function(event) {
+    event.preventDefault();
+    this.context.router.push("profile/about");
+  },
+
+  homeButton: function(event) {
+    event.preventDefault();
+    if (this.state.current_user.username) {
+      this.context.router.push("matches");
+    }
+    else {
+      this.signUp();
+    }
+
+    // nav to either
   },
 
   render: function() {
     var sessionButton = this.createSessionButton();
     var navMessage = this.createSessionMessage();
+    var matchButton = this.createMatchButton();
 
     return (
       <div className='tester'>
 
         <div id='navBarDiv'>
-          {navMessage}
           {sessionButton}
-          <h1 id='pokeCupidHeader'>PokéCupid !</h1>
+          {navMessage}
+          <h1 id='pokeCupidHeader' onClick={this.homeButton}>PokéCupid !</h1>
+          {matchButton}
         </div>
       </div>
 

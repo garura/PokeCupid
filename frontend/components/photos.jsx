@@ -5,7 +5,7 @@ var Photos = React.createClass({
   render: function() {
     return (
       <div>
-        photos!
+        <p id='noPhotos'>Photos coming soon!</p>
       </div>
     );
   }

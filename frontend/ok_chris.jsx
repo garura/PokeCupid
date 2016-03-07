@@ -59,7 +59,8 @@ var routes = (
     <Route path="signin" component={SignInAccountForm}/>
     <Route path="new" component={SignInPreferencesForm}/>
     <Route path="home" component={Home} onEnter={valid_login}/>
-    <Route path="matches" component={MatchIndex} onEnter={valid_login}/>
+    <Route path="matches" component={MatchIndex}/>
+    <Route path="user/:id" component={MatchInfo}/>
     <Route path="profile" component={Profile} onEnter={valid_login}>
       <Route path="about" component={About} onEnter={valid_login}/>
       <Route path="photos" component={Photos} onEnter={valid_login}/>
