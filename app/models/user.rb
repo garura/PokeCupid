@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   ]
 
   validates :username, :email, :session_token, :password_digest,
-    :birthday, :type_one, presence: true
+    :birthday, :type_one, :photo_url, presence: true
   validates :username, :email, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
   validates :type_one, inclusion: POKEMON_TYPES, allow_nil: true

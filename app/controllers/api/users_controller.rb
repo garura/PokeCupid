@@ -34,7 +34,6 @@ class Api::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @age = {age: (Time.now - @user.birthday.to_time) / 60 / 60 / 24 / 365 }
-    fail
     render :show
   end
 
@@ -48,6 +47,13 @@ class Api::UsersController < ApplicationController
     user = User.find(params[:user_id])
     user_response = user.response
     render json: {response: user_response}
+  end
+
+  def update_picture
+    @user = User.find(params[:id])
+    @user.update!(user_params)
+    @age = {age: (Time.now - @user.birthday.to_time) / 60 / 60 / 24 / 365 }
+    render :new
   end
 
   def update_response
@@ -67,7 +73,7 @@ class Api::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :email, :password, :type_one, :type_two, :response)
+    params.require(:user).permit(:username, :email, :password, :type_one, :type_two, :response, :photo_url)
   end
 
 end

@@ -4,7 +4,7 @@
   points = {points: User.match_points(@user, match) }
   json.set! match.id do
     json.userInfo do
-      json.extract! match, :username, :type_one, :type_two
+      json.extract! match, :username, :type_one, :type_two, :photo_url
       json.extract! age, :age
       json.extract! points, :points
     end

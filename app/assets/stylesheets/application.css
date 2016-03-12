@@ -465,6 +465,10 @@
 
 #profilePic {
   display: inline-block;
+  height: 225px;
+  width: 225px;
+  border: 1px solid lightgrey;
+  background-color: white;
 }
 
 #current_user_info {

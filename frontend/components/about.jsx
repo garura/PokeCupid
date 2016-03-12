@@ -29,7 +29,9 @@ var About = React.createClass({
   updateUserInfo: function() {
     var userInfo = SessionStore.session();
     this.setState({userInfo: userInfo})
-    apiUtil.getUserPersonality(userInfo);
+    if (userInfo.id) {
+      apiUtil.getUserPersonality(userInfo);
+    }
   },
 
   updateInfo: function() {

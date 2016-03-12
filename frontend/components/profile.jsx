@@ -29,7 +29,6 @@ var Profile = React.createClass({
   getInitialState: function() {
     var user_info = SessionStore.session() || {};
     var selected = routeParam[this.props.location.pathname];
-    debugger;
     return ({ current_user: user_info, selected: selected });
   },
 
@@ -45,7 +44,6 @@ var Profile = React.createClass({
 
   componentWillReceiveProps: function(newProps) {
     var selected = routeParam[newProps.location.pathname];
-    debugger;
     this.setState({ selected: selected });
   },
 
@@ -66,11 +64,22 @@ var Profile = React.createClass({
     }
 
     return (
-      <label href="#" id='current_user_info'>
+      <label onClick={this.savePic} id='current_user_info'>
         <p id='profileName'>{this.state.current_user.username}</p>
         <p>Level {Math.floor(this.state.current_user.age)}, {label}</p>
-
+        <p>Change your photo!</p>
       </label>
+    );
+  },
+
+  savePic: function(event) {
+    event.preventDefault();
+    var that = this;
+    cloudinary.openUploadWidget(
+      CLOUDINARY,
+      function (error, result) {
+        apiUtil.updateUserPicture(that.state.current_user.id, result[0].url);
+      }
     );
   },
 
@@ -96,11 +105,12 @@ var Profile = React.createClass({
   render: function() {
     var user_label = this.generateLabel() || "";
     var contentNav = this.generateContentNav();
-    debugger;
+    var photo = this.state.current_user.photo_url;
+
     return (
       <div id='profileDiv'>
         <img id='profilePic'
-             src='http://k3.okccdn.com/media/img/user/placeholder_2013/pq_225.png'
+             src={photo}
              alt='Profile Picture'>
         </img>
         {user_label}

@@ -9,5 +9,6 @@ Rails.application.routes.draw do
     post '/response/:id', to: 'users#update_response'
     get '/user/session/:id', to: 'users#session_info'
     get '/user/matches/:id', to: 'users#matches'
+    post '/user/photo/:id', to: 'users#update_picture'
   end
 end

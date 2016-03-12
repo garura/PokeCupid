@@ -135,6 +135,20 @@ var apiUtil = {
         MatchActions.sendMatches(matches);
       }
     });
+  },
+  updateUserPicture: function(id, photoUrl) {
+    $.ajax({
+      url: 'api/user/photo/' + id,
+      method: 'POST',
+      data: { user: {
+        photo_url: photoUrl
+      }},
+      success: function(userInfo) {
+        debugger;
+        // action to update session store url
+        SignInActions.sendSession(userInfo);
+      }
+    });
   }
 };
 
