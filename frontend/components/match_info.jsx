@@ -33,7 +33,9 @@ var MatchInfo = React.createClass({
   updateUserInfo: function() {
     var userInfo = SessionStore.session();
     this.setState({ userInfo: userInfo });
-    apiUtil.getUserMatches(userInfo.id);
+    if (userInfo.id) {
+      apiUtil.getUserMatches(userInfo.id);
+    }
   },
 
   updateMatchInfo: function() {
@@ -76,9 +78,11 @@ var MatchInfo = React.createClass({
       seeking = seeking.join(", ");
       if (seeking) {
         seeking = "For " + seeking;
+        var seekingContent = <p className='userPersonalityDetail'>{seeking}</p>
       }
       else {
-        seeking = "";
+        // seeking
+        var seekingContent = null;
       }
       var profilePicture = info.userInfo.photo_url;
       var rarecandy = info.personality.rarecandy;
@@ -125,7 +129,7 @@ var MatchInfo = React.createClass({
         <div id='userPersonalityInfo'>
           <p id='userPersonalityHeader'>Details</p>
           <p className='userPersonalityDetail'>Looking for Pokémon levels {min_level} to {max_level}</p>
-          <p className='userPersonalityDetail'>{seeking}</p>
+          {seekingContent}
           <p className='userPersonalityDetail'>Caught: {caught}</p>
           <p className='userPersonalityDetail'>Uses Rarecandy: {rarecandy}</p>
           <p className='userPersonalityDetail'>Pokérus: {pokerus}</p>

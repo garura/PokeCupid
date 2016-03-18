@@ -50,7 +50,9 @@ var Questions = React.createClass({
     var userInfo = SessionStore.session();
     this.setState({ userInfo: userInfo });
   // api req to update response
-    apiUtil.getUserResponse(userInfo);
+    if (userInfo.id) {
+      apiUtil.getUserResponse(userInfo);
+    }
   },
 
   updateResponse: function() {

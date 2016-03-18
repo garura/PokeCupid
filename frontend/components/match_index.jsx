@@ -30,7 +30,9 @@ var MatchIndex = React.createClass({
   updateUserInfo: function() {
     var userInfo = SessionStore.session();
     this.setState({ userInfo: userInfo });
-    apiUtil.getUserMatches(userInfo.id);
+    if (userInfo.id) {
+      apiUtil.getUserMatches(userInfo.id);
+    }
   },
 
   updateMatchInfo: function() {
