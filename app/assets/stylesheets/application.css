@@ -467,8 +467,8 @@
   display: inline-block;
   height: 225px;
   width: 225px;
-  border: 1px solid lightgrey;
-  background-color: white;
+  border: 1px solid grey;
+  background-color: lightblue;
 }
 
 #current_user_info {
@@ -1082,10 +1082,12 @@
   width: 110px;
   border-radius: 110px;
   margin-top: 5px;
+  border: 1px solid grey;
+  background-color: lightblue;
 }
 
 .matchIndexItemUser {
-  width: 300px;
+  width: 275px;
   margin-left: 30px;
 }
 
@@ -1110,6 +1112,7 @@
   display: inline-block;
   font-family: 'Signika';
   font-size: 20px;
+
 }
 
 .matchIndexItemNav {

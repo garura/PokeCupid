@@ -46,8 +46,9 @@ var MatchIndex = React.createClass({
       var typeOne = that.state.matchInfo[match_id].userInfo.type_one;
       var typeTwo = that.state.matchInfo[match_id].userInfo.type_two;
       var points = Math.floor((that.state.matchInfo[match_id].userInfo.points / 6) * 100);
+      var photo = that.state.matchInfo[match_id].userInfo.photo_url;
       return (
-        <MatchIndexItem key={index} matchId={match_id} username={username} age={age} typeOne={typeOne} typeTwo={typeTwo} points={points} />
+        <MatchIndexItem key={index} matchId={match_id} username={username} age={age} typeOne={typeOne} typeTwo={typeTwo} points={points} photoUrl ={photo}/>
       );
     });
 

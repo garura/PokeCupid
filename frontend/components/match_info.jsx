@@ -80,7 +80,7 @@ var MatchInfo = React.createClass({
       else {
         seeking = "";
       }
-
+      var profilePicture = info.userInfo.photo_url;
       var rarecandy = info.personality.rarecandy;
       var pokerus = info.personality.pokerus ? "Yes" : "No";
       var caught = info.personality.caught ? "Yes" : "No";
@@ -90,7 +90,7 @@ var MatchInfo = React.createClass({
       <div id='userInfoPage'>
         <div id='userProfileInfo'>
           <img id='profilePic'
-               src='http://k3.okccdn.com/media/img/user/placeholder_2013/pq_225.png'
+               src={profilePicture}
                alt='Profile Picture'>
           </img>
           <div id='userProfileText'>

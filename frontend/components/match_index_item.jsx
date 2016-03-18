@@ -13,13 +13,15 @@ var MatchIndexItem = React.createClass({
     var typeTwo = this.props.typeTwo;
     var matchId = this.props.matchId;
     var points = this.props.points;
+    var photo = this.props.photoUrl;
     return ({
       matchId: matchId,
       username: username,
       age: age,
       typeOne: typeOne,
       typeTwo: typeTwo,
-      points: points
+      points: points,
+      photo: photo
     });
   },
 
@@ -28,15 +30,21 @@ var MatchIndexItem = React.createClass({
     var age = newProps.age;
     var typeOne = newProps.typeOne;
     var typeTwo = newProps.typeTwo;
-    var matchId = this.props.matchId;
-    var points = this.props.points;
+    var photo_url = newProps.photoUrl;
+    // why this.props instead of newProps?
+    var matchId = newProps.matchId;
+    var points = newProps.points;
+
+    // var matchId = this.props.matchId;
+    // var points = this.props.points;
     this.setState({
       matchId: matchId,
       username: username,
       age: age,
       typeOne: typeOne,
       typeTwo: typeTwo,
-      points: points
+      points: points,
+      photo_url: photo_url
     });
   },
 
@@ -56,7 +64,7 @@ var MatchIndexItem = React.createClass({
     return (
       <div className='matchIndexItemDiv'>
         <img className='matchIndexPic'
-             src='http://k3.okccdn.com/media/img/user/placeholder_2013/pq_225.png'
+             src={this.state.photo}
              alt='Profile Picture'>
         </img>
         <div className='matchIndexItemUser'>
