@@ -55,7 +55,6 @@ var MatchIndexItem = React.createClass({
   },
 
   render: function() {
-
     var types = this.state.typeOne;
     if (this.state.typeTwo) {
       types += ("-" + this.state.typeTwo);

@@ -58,9 +58,7 @@ var MatchIndex = React.createClass({
   },
 
   render: function() {
-
     var matches = this.generateMatchList();
-
     if (matches.length === 0) {
       matches =
         <p id='noMatches'>
