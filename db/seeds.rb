@@ -26,6 +26,13 @@ types.sample(6).each do |type|
 end
 
 bday = Time.new(years.sample, months.sample, days.sample)
+User.create!(username: "Pidgey", password: "123123", email: "pidgey@poke.com", birthday: bday, type_one: "Normal", type_two: "Flying", response: "TTTTTF", photo_url: "http://res.cloudinary.com/dxclocey3/image/upload/v1458078346/250px-016Pidgey_azp1cy.png")
+PokePersonality.create!(user_id: 4, summary: "Just left the nest, out on my own!", daily: "Learning from my mistakes everyday.", skills: "Gust, sand-attack, peck... hope to learn Fly soon!", favorites: "I love caterpie, so cute (and tasty)!", six: "I miss home...", friday: "I like saying hi to people leaving Pallet Town.", message: "You have HM02!", min_level: 18, max_level: 100, battling: true, friendship: true, breeding: false, rarecandy: "Maybe before a big fight", pokerus: false, caught: false)
+types.sample(6).each do |type|
+  PokePreference.create!(user_id: 4, poke_type: type)
+end
+
+bday = Time.new(years.sample, months.sample, days.sample)
 User.create!(username: "Koffing", password: "123123", email: "koffing@poke.com", birthday: bday, type_one: "Poison", response: "FFFTFF", photo_url: "http://res.cloudinary.com/dxclocey3/image/upload/v1458078394/250px-109Koffing_fzibbm.png")
 PokePersonality.create!(user_id: 5, summary: "I'm a cool guy if you don't mind the smell.", daily: "Still deciding what I want to do.", skills: "Telling jokes.", favorites: "I love surprising people... BOOM!", six: "James <3", friday: "Protecting the world from devastation!", message: "You like jokes... I'm a gas!", min_level: 18, max_level: 100, battling: true, friendship: true, breeding: true, rarecandy: "Never", pokerus: false, caught: false)
 types.sample(6).each do |type|
@@ -100,13 +107,6 @@ User.create!(username: "Alakazam", password: "123123", email: "alakazam@poke.com
 PokePersonality.create!(user_id: 15, summary: "I have an IQ of over 5000!", daily: "Always learning new things. It's my passion!", skills: "I can bend a spoon with my mind!", favorites: "Teleport... I hardly use my legs these days.", six: "My twisted spoon. It's special to me.", friday: "Practicing my arts.", message: "You don't mind that I can read minds :)", min_level: 18, max_level: 100, battling: true, friendship: true, breeding: true, rarecandy: "Never", pokerus: false, caught: false)
 types.sample(6).each do |type|
   PokePreference.create!(user_id: 15, poke_type: type)
-end
-
-bday = Time.new(years.sample, months.sample, days.sample)
-User.create!(username: "Pidgey", password: "123123", email: "pidgey@poke.com", birthday: bday, type_one: "Normal", type_two: "Flying", response: "TTTTTF", photo_url: "http://res.cloudinary.com/dxclocey3/image/upload/v1458078346/250px-016Pidgey_azp1cy.png")
-PokePersonality.create!(user_id: 4, summary: "Just left the nest, out on my own!", daily: "Learning from my mistakes everyday.", skills: "Gust, sand-attack, peck... hope to learn Fly soon!", favorites: "I love caterpie, so cute (and tasty)!", six: "I miss home...", friday: "I like saying hi to people leaving Pallet Town.", message: "You have HM02!", min_level: 18, max_level: 100, battling: true, friendship: true, breeding: false, rarecandy: "Maybe before a big fight", pokerus: false, caught: false)
-types.sample(6).each do |type|
-  PokePreference.create!(user_id: 4, poke_type: type)
 end
 
 bday = Time.new(years.sample, months.sample, days.sample)
