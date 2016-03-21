@@ -9,8 +9,9 @@ PokéCupid is a Pokémon themed dating web app. PokéCupid allows users to creat
 ## Overview
 PokéCupid uses Ruby on Rails for the backend, satisfying the CRUD needs of the the application. The frontend uses React.js, using the Flux application architecture.
 
-### Data
-The app uses PostgreSQL, with the following tables:
+### Backend
+
+The app uses PostgreSQL to save and serve data for user info and matches, with the following tables:
 
 **users**
 
@@ -60,4 +61,17 @@ The app uses PostgreSQL, with the following tables:
 | created_at | datetime | not null |
 | updated_at | datetime | not null |
 
-
+### Frontend
+The views are created with React.js. The app follows the Flux application architecture, and is organized into the following sections:
+  - Actions
+    - Action events created by user interatctions or component functions that trigger a dispatch to the stores with updated information (often from API requests)
+  - Components
+    - React components that are response for encapsulating the necessary internal logic of the element, and for responding to updates to stores they listen to
+  - Dispatcher
+    - The single dispatcher that pulses new information to all stores. Triggered by actions
+  - Stores
+    - Stores information that React components utilize. Different stores exist to hold different information.
+  - Util
+    - Contains the different API request methods.
+  
+The entry file ('ok_chris.jsx') defines the routes of the website, and contains checks that only allows users to see certain pages while logged in.
