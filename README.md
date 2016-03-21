@@ -1,10 +1,8 @@
 # PokéCupid
 
-[Heroku link][heroku]
+[Live link][heroku]
 
 [heroku]: pokecupid.herokuapp.com
-
-## Minimum Viable Product
 
 PokéCupid is a web application inspired by OkCupid built using Ruby on Rails and
 React.js. PokéCupid allows users to:
