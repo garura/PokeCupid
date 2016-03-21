@@ -12,8 +12,6 @@ PokéCupid uses Ruby on Rails for the backend, satisfying the CRUD needs of the 
 ### Data
 The app uses PostgreSQL, with the following tables:
 users
- | users         | data type     | details  |
- | ------------- |:-------------:| :-------:|
- | col 3 is      | right-aligned | $1600    |
- | col 2 is      | centered      |   $12    |
- | zebra stripes | are neat      |    $1    |
+ | users | data type | details |
+ | --- | --- | --- |
+ | name | string | not null, unique |
