@@ -1,6 +1,6 @@
 # PokéCupid
 
-[Live link](pokecupid.herokuapp.com)
+[Live link](http://pokecupid.herokuapp.com)
 
 PokéCupid is a Pokémon themed dating web app. PokéCupid allows users to create an account for the site, specifying the types they are interested in and what types they are. Alternatively, they can use the demo account. Users can update their personal info, answer up to six questions, and match with other users. The matches are made based on shared responses to the questions, as well as types. The user is able to see the profile pages of their matches.
 
