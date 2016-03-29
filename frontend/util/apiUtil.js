@@ -144,8 +144,6 @@ var apiUtil = {
         photo_url: photoUrl
       }},
       success: function(userInfo) {
-        debugger;
-        // action to update session store url
         SignInActions.sendSession(userInfo);
       }
     });

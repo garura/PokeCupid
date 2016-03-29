@@ -41,7 +41,19 @@ var MatchIndex = React.createClass({
 
   generateMatchList: function() {
     var that = this;
-    var matches = Object.keys(this.state.matchInfo).map(function(match_id, index) {
+
+    // sort by % match
+    var matches = Object.keys(this.state.matchInfo).sort(function(el1, el2) {
+      if (that.state.matchInfo[el1].userInfo.points > that.state.matchInfo[el2].userInfo.points) {
+        return -1;
+      }
+      else if (that.state.matchInfo[el1].userInfo.points < that.state.matchInfo[el2].userInfo.points) {
+        return 1;
+      }
+      return 0;
+    });
+
+    matches = matches.map(function(match_id, index) {
       var username = that.state.matchInfo[match_id].userInfo.username;
       var age = that.state.matchInfo[match_id].userInfo.age
       age = Math.floor(age);

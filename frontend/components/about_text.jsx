@@ -25,7 +25,6 @@ var AboutText = React.createClass({
 
   clickUpdate: function(event) {
     event.preventDefault();
-    debugger;
     ErrorActions.sendErrors([this.refs['textRef'].value]);
     this.setState({editMode: false});
   },

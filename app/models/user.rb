@@ -55,14 +55,19 @@ class User < ActiveRecord::Base
     points
   end
 
-  def matches
-    preferences = self.poke_preferences.map { |pref| pref.poke_type }
-    match_type_users = User.where("type_one IN (?) OR type_two IN (?)", preferences, preferences)
+  def matches(preferences = nil)
+    # preferences ||= self.poke_preferences
+    preferences = preferences.map { |pref| pref.poke_type }
     good_matches = []
+
+    match_type_users = User.includes(:poke_personality).where("type_one IN (?) OR type_two IN (?)", preferences, preferences)
     match_type_users.each do |user|
-      good_matches << user if User.match_points(self, user) >= 1
+      next if user == self
+      points = User.match_points(self, user)
+      good_matches << user if points >= 1
     end
-    good_matches - [self]
+
+    good_matches
   end
 
 

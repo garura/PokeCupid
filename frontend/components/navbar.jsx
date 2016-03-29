@@ -115,7 +115,6 @@ var NavBar = React.createClass({
   },
 
   demoUser: function(event) {
-    // debugger;
     // event.preventDefault();
     var demo = {
       user: {

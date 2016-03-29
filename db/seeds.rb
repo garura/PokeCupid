@@ -26,7 +26,7 @@ types.sample(6).each do |type|
 end
 
 bday = Time.new(years.sample, months.sample, days.sample)
-User.create!(username: "Pidgey", password: "123123", email: "pidgey@poke.com", birthday: bday, type_one: "Normal", type_two: "Flying", response: "TTTTTF", photo_url: "http://res.cloudinary.com/dxclocey3/image/upload/v1458078346/250px-016Pidgey_azp1cy.png")
+User.create!(username: "Pidgey", password: "123123", email: "pidgey@poke.com", birthday: bday, type_one: "Normal", type_two: "Flying", response: "FFTTTF", photo_url: "http://res.cloudinary.com/dxclocey3/image/upload/v1458078346/250px-016Pidgey_azp1cy.png")
 PokePersonality.create!(user_id: 4, summary: "Just left the nest, out on my own!", daily: "Learning from my mistakes everyday.", skills: "Gust, sand-attack, peck... hope to learn Fly soon!", favorites: "I love caterpie, so cute (and tasty)!", six: "I miss home...", friday: "I like saying hi to people leaving Pallet Town.", message: "You have HM02!", min_level: 18, max_level: 100, battling: true, friendship: true, breeding: false, rarecandy: "Maybe before a big fight", pokerus: false, caught: false)
 types.sample(6).each do |type|
   PokePreference.create!(user_id: 4, poke_type: type)
@@ -40,7 +40,7 @@ types.sample(6).each do |type|
 end
 
 bday = Time.new(years.sample, months.sample, days.sample)
-User.create!(username: "Dugtrio", password: "123123", email: "dugtrio@poke.com", birthday: bday, type_one: "Ground", response: "FFFTTF", photo_url: "http://res.cloudinary.com/dxclocey3/image/upload/v1458078436/250px-051Dugtrio_cimqau.png")
+User.create!(username: "Dugtrio", password: "123123", email: "dugtrio@poke.com", birthday: bday, type_one: "Ground", response: "TTTTTF", photo_url: "http://res.cloudinary.com/dxclocey3/image/upload/v1458078436/250px-051Dugtrio_cimqau.png")
 PokePersonality.create!(user_id: 6, summary: "You've heard the saying 'Three heads are better than one'?", daily: "Working on a new tunnel, Victory Road was annoying.", skills: "Digging, tunneling, and making holes, respectively.", favorites: "The smell of earth after rain.", six: "My other 2 heads... They really get me.", friday: "Hanging out with my buddy Geodude!", message: "You like to get a little dirty every now and then ;)", min_level: 18, max_level: 100, battling: true, friendship: true, breeding: false, rarecandy: "Anytime I find one!", pokerus: false, caught: true)
 types.sample(6).each do |type|
   PokePreference.create!(user_id: 6, poke_type: type)
@@ -83,7 +83,7 @@ end
 
 bday = Time.new(years.sample, months.sample, days.sample)
 User.create!(username: "Squirtle", password: "123123", email: "squirtle@poke.com", birthday: bday, type_one: "Fighting", response: "TFFFTF", photo_url: "http://res.cloudinary.com/dxclocey3/image/upload/v1458079571/250px-007Squirtle_mkagyv.png")
-PokePersonality.create!(user_id: 12, summary: "I'm just a 'mon with cool style. People seem to like me.'", daily: "I'm the leader of a pretty cool gang.", skills: "Break-dancing, jokes, bubblebeam.", favorites: "I love hanging out with my squad!", six: "My squad!", friday: "Getting into trouble, running away from Officer Jenny.", message: "You like swimming.", min_level: 18, max_level: 100, battling: true, friendship: true, breeding: false, rarecandy: "Never", pokerus: false, caught: false)
+PokePersonality.create!(user_id: 12, summary: "I'm just a 'mon with cool style. People seem to like me.", daily: "I'm the leader of a pretty cool gang.", skills: "Break-dancing, jokes, bubblebeam.", favorites: "I love hanging out with my squad!", six: "My squad!", friday: "Getting into trouble, running away from Officer Jenny.", message: "You like swimming.", min_level: 18, max_level: 100, battling: true, friendship: true, breeding: false, rarecandy: "Never", pokerus: false, caught: false)
 types.sample(6).each do |type|
   PokePreference.create!(user_id: 12, poke_type: type)
 end

@@ -11,7 +11,7 @@ var MatchInfo = React.createClass({
   },
 
   getInitialState: function() {
-    var matchInfo = {};
+    var matchInfo = MatchStore.find(this.props.params.id) || {};
     var userInfo = SessionStore.session() || {};
     return ({ matchInfo: matchInfo,
               userInfo: userInfo });
@@ -20,9 +20,11 @@ var MatchInfo = React.createClass({
   componentDidMount: function() {
     this.sessionToken = SessionStore.addListener(this.updateUserInfo);
     this.matchToken = MatchStore.addListener(this.updateMatchInfo);
-    // only need to getSessionInfo if no session store?
-    var id = SessionStore.session().id || window.localStorage.getItem('user_id');
-    apiUtil.getSessionInfo(id);
+    // only need to getSessionInfo if no session store (user refreshed window)
+    if (SessionStore.session().id === null) {
+      var id = window.localStorage.getItem('user_id');
+      apiUtil.getSessionInfo(id);
+    }
   },
 
   componentWillUnmount: function() {
