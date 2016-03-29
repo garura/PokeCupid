@@ -34,7 +34,7 @@ end
 
 bday = Time.new(years.sample, months.sample, days.sample)
 User.create!(username: "Koffing", password: "123123", email: "koffing@poke.com", birthday: bday, type_one: "Poison", response: "FFFTFF", photo_url: "http://res.cloudinary.com/dxclocey3/image/upload/v1458078394/250px-109Koffing_fzibbm.png")
-PokePersonality.create!(user_id: 5, summary: "I'm a cool guy if you don't mind the smell.", daily: "Still deciding what I want to do.", skills: "Telling jokes.", favorites: "I love surprising people... BOOM!", six: "James <3", friday: "Protecting the world from devastation!", message: "You like jokes... I'm a gas!", min_level: 18, max_level: 100, battling: true, friendship: true, breeding: true, rarecandy: "Never", pokerus: false, caught: false)
+PokePersonality.create!(user_id: 5, summary: "I'm a cool guy if you don't mind the smell.", daily: "Still deciding what I want to do.", skills: "Telling jokes.", favorites: "I love surprising people... BOOM!", six: "James <3", friday: "Protecting the world from devastation!", message: "You like jokes... I'm a gas!", min_level: 18, max_level: 100, battling: true, friendship: true, breeding: true, rarecandy: "Never", pokerus: false, caught: true)
 types.sample(6).each do |type|
   PokePreference.create!(user_id: 5, poke_type: type)
 end
